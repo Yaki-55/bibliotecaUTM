@@ -1,0 +1,106 @@
+/* libroComponent.css */
+body {
+    background-color: #007bff; /* Este es un azul genérico, ajusta el color como desees */
+}
+.libro-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto; /* Ajusta el margen automático para centrar horizontalmente */
+    width: 90%;
+    max-width: 1200px;
+    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    position: absolute; /* Coloca el contenedor de manera absoluta */
+    top: 50%; /* Coloca el contenedor en el 50% del eje Y */
+    left: 50%; /* Coloca el contenedor en el 50% del eje X */
+    transform: translate(-50%, -50%); /* Centra el contenedor correctamente */
+}
+.libro-container h1 {
+    text-align: center;
+    color: #1f169f;
+}
+
+.libro-container table {
+    position: center;
+
+    width: 100%;
+    max-width: 100%; /* Asegura que la tabla no sea más ancha que su contenedor */
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es muy ancha */
+}
+.libro-container th, .libro-container td {
+    border: 1px solid #000000;
+    padding: 6px;
+    text-align: left;
+    color: black;
+}
+
+.libro-container th {
+    background-color: #666;
+    color: white;
+}
+
+.libro-container td {
+    background-color: #fff;
+}
+
+.libro-container input[type="text"],
+.libro-container input[type="number"],
+.libro-container input[type="date"],
+.libro-container input[type="checkbox"] {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.libro-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.libro-container .formulario-libro h2 {
+    color: black; /* Cambia el color de la letra a negro */
+}
+
+.libro-container .agregar-libro {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+
+/* Estilos para organizar el formulario en tres columnas */
+.libro-container .formulario-libro {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 20px; /* Espacio entre las columnas */
+    align-items: end; /* Alinea los elementos al final de cada fila */
+}
+
+.libro-container .formulario-libro .input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.libro-container .formulario-libro .input-group label {
+    margin-bottom: .5em;
+}
+
+.libro-container .formulario-libro button {
+    grid-column: span 3; /* El botón se extiende a través de las tres columnas */
+}
+
+/* El botón de Salir se coloca al final y abarca las tres columnas */
+.libro-container .salir-libro {
+    grid-column: span 3;
+    justify-self: center; 
+}
+
+.libro-container .input-group label {
+    color: #000; /* Esto es negro */
+    /* Asegúrate de agregar más estilos aquí si es necesario, como display, margin, etc. */
+}

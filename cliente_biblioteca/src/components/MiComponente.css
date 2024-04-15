@@ -1,0 +1,49 @@
+/* MiComponente.css */
+
+/* Estilos para la tabla */
+table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px; /* Agrega bordes curvos */
+  overflow: hidden; /* Oculta el contenido que se sale de los bordes curvos */
+}
+
+/* Estilos para las celdas de encabezado */
+th {
+  background-color: #000000; /* Fondo negro */
+  color: #ffffff; /* Texto blanco */
+  padding: 10px;
+  text-align: left;
+  border-right: 3px solid #000000; /* Borde derecho blanco para separación */
+}
+
+/* Estilos para las celdas de datos */
+td {
+  background-color: #ffffff; /* Fondo blanco */
+  color: #000000; /* Texto negro */
+  padding: 10px;
+  border-bottom: 1px solid #000000; /* Borde inferior negro */
+  border-right: 3px solid #000000; /* Borde derecho blanco para separación */
+}
+
+/* Estilos para las filas impares */
+tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Estilos para el título */
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Estilos para los enlaces */
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
