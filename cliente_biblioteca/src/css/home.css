@@ -1,0 +1,43 @@
+body {
+    background-color: #f2f2f2; /* Fondo de la página: gris claro */
+    margin: 0; /* Eliminar margen predeterminado */
+    padding: 0; /* Eliminar relleno predeterminado */
+    color: #333333; /* Color de texto: tono oscuro */
+  }
+  
+  .home-container {
+    text-align: center;
+    width: 90%; /* Ancho del contenedor */
+    max-width: 600px; /* Ancho máximo del contenedor */
+    background-color: #f8feffd7; /* Fondo del contenedor: blanco */
+    padding: 20px; /* Agregar espacio interno al contenedor */
+    border-radius: 8px; /* Agregar bordes redondeados al contenedor */
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Centrar el contenedor correctamente */
+  }
+  
+  .home-container h1 {
+    color: #007bff; /* Color del título principal: azul suave */
+  }
+  
+  .home-container p {
+    margin-bottom: 20px;
+  }
+  
+  .home-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #316ba9; /* Color de fondo del enlace: azul suave */
+    color: #fff; /* Color del texto del enlace: blanco */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-link:hover {
+    background-color: #0056b3; /* Color de fondo del enlace al pasar el cursor: azul más oscuro */
+  }
+  

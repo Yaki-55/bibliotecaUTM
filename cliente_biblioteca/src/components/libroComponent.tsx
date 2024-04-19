@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import client from '../utils/sanityClient'; 
-import './libroComponent.css'
+import '../css/libro.css';
+
 
 const LibroComponent: React.FC = () => {
     const [libros, setLibros] = useState<any[]>([]); // Define el estado para almacenar los libros
@@ -15,7 +16,7 @@ const LibroComponent: React.FC = () => {
     const [newBookTopic, setNewBookTopic] = useState<string>('');
     const [newBookAvailableQuantity, setNewBookAvailableQuantity] = useState<number | ''>('');
     const [newBookIsDonated, setNewBookIsDonated] = useState<boolean>(false);
-    const [editingBook, setEditingBook] = useState(null);
+    //const [editingBook, setEditingBook] = useState(null);
 
     useEffect(() => {
         const fetchBooks = async () => {
