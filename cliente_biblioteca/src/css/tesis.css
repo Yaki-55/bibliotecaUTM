@@ -1,0 +1,108 @@
+body {
+    background-color: #007bff; /* Color de fondo azul */
+}
+
+.tesis-container {
+    background-color: #f4f4f4; /* Color de fondo gris claro */
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto; /* Centra horizontalmente */
+    width: 90%;
+    max-width: 1200px;
+    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra correctamente */
+}
+
+.tesis-container h1 {
+    text-align: center;
+    color: #1f169f; /* Color del texto */
+}
+
+.tesis-container table {
+    width: 100%;
+    max-width: 100%; /* Asegura que la tabla no sea más ancha que su contenedor */
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es muy ancha */
+}
+
+.tesis-container th, .tesis-container td {
+    border: 1px solid #000000; /* Borde */
+    padding: 6px;
+    text-align: left;
+    color: black; /* Color del texto */
+}
+
+.tesis-container th {
+    background-color: #666; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+.tesis-container td {
+    background-color: #fff; /* Color de fondo de las celdas de la tabla */
+}
+
+.tesis-container input[type="text"],
+.tesis-container input[type="number"],
+.tesis-container input[type="date"],
+.tesis-container input[type="checkbox"] {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.tesis-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tesis-container .formulario-tesis h2 {
+    color: black; /* Color del título del formulario */
+}
+
+.tesis-container .agregar-tesis {
+    background-color: #4CAF50; /* Color de fondo del botón de agregar */
+    color: white; /* Color del texto del botón de agregar */
+}
+
+/* Estilos para organizar el formulario en tres columnas */
+.tesis-container .formulario-tesis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 20px; /* Espacio entre las columnas */
+    align-items: end; /* Alinea los elementos al final de cada fila */
+}
+
+.tesis-container .formulario-tesis .input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.tesis-container .formulario-tesis .input-group label {
+    margin-bottom: .5em;
+}
+
+.tesis-container .formulario-tesis button {
+    grid-column: span 3; /* El botón se extiende a través de las tres columnas */
+}
+
+/* El botón de Salir se coloca al final y abarca las tres columnas */
+.tesis-container .salir-tesis {
+    grid-column: span 3;
+    color: #000;
+    justify-self: left; 
+
+
+}
+
+.tesis-container .input-group label {
+    color: #000; /* Color del texto de las etiquetas */
+}

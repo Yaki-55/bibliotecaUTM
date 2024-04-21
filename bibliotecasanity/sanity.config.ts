@@ -1,21 +1,16 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-//import {googleMapsInput} from '@sanity/google-maps-input'
 import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'bibliotecaSanity',
+  title: 'bibliotecaV2',
 
-  projectId: '5rc1pjr5',
+  projectId: '2h3kig75',
   dataset: 'production',
 
-  plugins: [
-    structureTool(),
-    visionTool(),
-    //googleMapsInput(),
-  ],
+  plugins: [structureTool(), visionTool()],
 
   schema: {
     types: schemaTypes,

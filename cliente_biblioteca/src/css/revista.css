@@ -1,0 +1,107 @@
+body {
+    background-color: #007bff; /* Color de fondo azul */
+}
+
+.revista-container {
+    background-color: #f4f4f4; /* Color de fondo gris claro */
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto; /* Centra horizontalmente */
+    width: 90%;
+    max-width: 1200px;
+    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra correctamente */
+}
+
+.revista-container h1 {
+    text-align: center;
+    color: #1f169f; /* Color del texto */
+}
+
+.revista-container table {
+    width: 100%;
+    max-width: 100%; /* Asegura que la tabla no sea más ancha que su contenedor */
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es muy ancha */
+}
+
+.revista-container th, .revista-container td {
+    border: 1px solid #000000; /* Borde */
+    padding: 6px;
+    text-align: left;
+    color: black; /* Color del texto */
+}
+
+.revista-container th {
+    background-color: #666; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+.revista-container td {
+    background-color: #fff; /* Color de fondo de las celdas de la tabla */
+}
+
+.revista-container input[type="text"],
+.revista-container input[type="number"],
+.revista-container input[type="date"],
+.revista-container input[type="checkbox"] {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.revista-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.revista-container .formulario-revista h2 {
+    color: black; /* Color del título del formulario */
+}
+
+.revista-container .agregar-revista {
+    background-color: #4CAF50; /* Color de fondo del botón de agregar */
+    color: white; /* Color del texto del botón de agregar */
+}
+
+/* Estilos para organizar el formulario en tres columnas */
+.revista-container .formulario-revista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 20px; /* Espacio entre las columnas */
+    align-items: end; /* Alinea los elementos al final de cada fila */
+}
+
+.revista-container .formulario-revista .input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.revista-container .formulario-revista .input-group label {
+    margin-bottom: .5em;
+}
+
+.revista-container .formulario-revista button {
+    grid-column: span 3; /* El botón se extiende a través de las tres columnas */
+}
+
+/* El botón de Salir se coloca al final y abarca las tres columnas */
+.revista-container .salir-revista {
+    grid-column: span 3;
+    justify-self: left; 
+    color: #000;
+
+}
+
+.revista-container .input-group label {
+    color: #000; /* Color del texto de las etiquetas */
+}
