@@ -24,7 +24,7 @@ body {
 
 .Agregar_Usuario {
   text-align: center;
-  width: 90%; /* Ancho del contenedor */
+  width: 80%; /* Ancho del contenedor */
   max-width: 300px; /* Ancho máximo del contenedor */
   background-color: #f8feff; /* Color de fondo del contenedor */
   padding: 20px; /* Agregar espacio interno al contenedor */
