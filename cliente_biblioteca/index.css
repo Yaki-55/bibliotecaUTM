@@ -1,0 +1,6 @@
+img {
+    width: 200px; /* Ancho de la imagen */
+    height: 150px; /* Alto de la imagen */
+    margin: 10px; /* Margen alrededor de la imagen */
+    border: 3px solid #ccc; /* Borde alrededor de la imagen */
+  }

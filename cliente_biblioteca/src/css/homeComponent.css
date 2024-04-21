@@ -1,0 +1,53 @@
+.home-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto; /* Ajusta el margen automático para centrar horizontalmente */
+    width: 60%;
+    max-width: 1200px;
+    height: 80%;
+    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    position: absolute; /* Coloca el contenedor de manera absoluta */
+    top: 50%; /* Coloca el contenedor en el 50% del eje Y */
+    left: 50%; /* Coloca el contenedor en el 50% del eje X */
+    transform: translate(-50%, -50%); /* Centra el contenedor correctamente */
+}
+
+.home-logo{
+    display: grid;
+    grid-template-columns: min-content auto;
+    gap: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.home-menuImgOpciones {
+    display: grid; /* Activar el modo Grid */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 10fr)); /* Definir las columnas */
+    gap: 10px; /* Espaciado entre elementos */
+    align-items: center; /* Alinear verticalmente los elementos */
+  }
+  
+  .home-menuImgOpciones img {
+    margin-left: 30px;
+    margin-top: 30px;
+    width: 75%; /* Ajustar el ancho de la imagen al ancho de la columna */
+    height: auto; /* Mantener la relación de aspecto de la imagen */
+  }
+  
+  .home-menuNameOpciones {
+    display: flex; /* Activate Flexbox layout */
+    flex-direction: row; /* Arrange items in a row */
+    justify-content: space-around; /* Distribute space evenly between items */
+    align-items: center; /* Align items vertically in the center */
+  }
+  
+  .hmno {
+    flex: 1; /* Allow each item to grow and shrink proportionally */
+    text-align: center; /* Center text within each item */
+  }
+  
+  
+  
+  
