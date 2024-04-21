@@ -237,5 +237,4 @@ const LibroComponent: React.FC = () => {
     </div>
   );
 };
-
 export default LibroComponent;
