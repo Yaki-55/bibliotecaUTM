@@ -1,181 +1,109 @@
-
-* {
-	box-sizing: border-box;
-}
-
 body {
-	background: #19db29;
-}
-.container {
-  position: absolute; /* Cambia la posición del contenedor */
-  top: 25%; /* Desplaza el contenedor hacia abajo */
-  transform: translateY(-50%); /* Centra verticalmente el contenedor */
-  left: 50%; /* Centra horizontalmente el contenedor */
-  transform: translateX(-50%); /* Centra horizontalmente el contenedor */
-  max-width: 800px; /* Ancho máximo del contenedor */
-  width: 80%; /* Ancho del contenedor en porcentaje */
-  background-color: #f0f0f0; /* Color de fondo */
-  padding: 20px; /* Espacio interno del contenedor */
+    background-color: #007bff; /* Color de fondo azul */
 }
 
-.title {
-  text-align: center;
-  color: black;
-  font-size: 24px; /* Ajusta el tamaño de la fuente según sea necesario */
+.tesis-container {
+    background-color: #f4f4f4; /* Color de fondo gris claro */
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto; /* Centra horizontalmente */
+    width: 90%;
+    max-width: 1200px;
+    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra correctamente */
 }
 
-
-
-.form-container {
-  max-width: 600px; /* Ancho máximo del contenedor del formulario */
-  width: 100%;
-  padding: 20px;
-  background-color: #000;
-}
-.formulario {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 20px;
+.tesis-container h1 {
+    text-align: center;
+    color: #1f169f; /* Color del texto */
 }
 
-.formulario__label {
-	display: block;
-	font-weight: 700;
-	padding: 10px;
-	cursor: pointer;
+.tesis-container table {
+    width: 100%;
+    max-width: 100%; /* Asegura que la tabla no sea más ancha que su contenedor */
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es muy ancha */
 }
 
-.formulario__grupo-input {
-	position: relative;
+.tesis-container th, .tesis-container td {
+    border: 1px solid #000000; /* Borde */
+    padding: 6px;
+    text-align: left;
+    color: black; /* Color del texto */
 }
 
-.formulario__input {
-	width: 100%;
-	background: #fff;
-	border: 3px solid transparent;
-	border-radius: 3px;
-	height: 45px;
-	line-height: 45px;
-	padding: 0 40px 0 10px;
-	transition: .3s ease all;
+.tesis-container th {
+    background-color: #666; /* Color de fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
 }
 
-.formulario__input:focus {
-	border: 3px solid #0075FF;
-	outline: none;
-	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+.tesis-container td {
+    background-color: #fff; /* Color de fondo de las celdas de la tabla */
 }
 
-.formulario__input-error {
-	margin-bottom: 0;
-	display: none;
+.tesis-container input[type="text"],
+.tesis-container input[type="number"],
+.tesis-container input[type="date"],
+.tesis-container input[type="checkbox"] {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-.formulario__input-error-activo {
-	display: block;
+.tesis-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.formulario__validacion-estado {
-	position: absolute;
-	right: 10px;
-	bottom: 15px;
-	z-index: 100;
-	font-size: 16px;
-	opacity: 0;
+.tesis-container .formulario-tesis h2 {
+    color: black; /* Color del título del formulario */
 }
 
-.formulario__checkbox {
-	margin-right: 10px;
+.tesis-container .agregar-tesis {
+    background-color: #4CAF50; /* Color de fondo del botón de agregar */
+    color: white; /* Color del texto del botón de agregar */
 }
 
-.formulario__grupo-terminos, 
-.formulario__mensaje,
-.formulario__grupo-btn-enviar {
-	grid-column: span 2;
+/* Estilos para organizar el formulario en tres columnas */
+.tesis-container .formulario-tesis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+    gap: 20px; /* Espacio entre las columnas */
+    align-items: end; /* Alinea los elementos al final de cada fila */
 }
 
-.formulario__mensaje {
-	height: 45px;
-	line-height: 45px;
-	background: #F66060;
-	padding: 0 15px;
-	border-radius: 3px;
-	display: none;
+.tesis-container .formulario-tesis .input-group {
+    display: flex;
+    flex-direction: column;
 }
 
-.formulario__mensaje-activo {
-	display: block;
+.tesis-container .formulario-tesis .input-group label {
+    margin-bottom: .5em;
 }
 
-.formulario__mensaje p {
-	margin: 0;
+.tesis-container .formulario-tesis button {
+    grid-column: span 3; /* El botón se extiende a través de las tres columnas */
 }
 
-.formulario__grupo-btn-enviar {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+/* El botón de Salir se coloca al final y abarca las tres columnas */
+.tesis-container .salir-tesis {
+    grid-column: span 3;
+    color: #000;
+    justify-self: left; 
+
+
 }
 
-.formulario__btn {
-	height: 45px;
-	line-height: 45px;
-	width: 30%;
-	background: #000;
-	color: #fff;
-	font-weight: bold;
-	border: none;
-	border-radius: 3px;
-	cursor: pointer;
-	transition: .1s ease all;
+.tesis-container .input-group label {
+    color: #000; /* Color del texto de las etiquetas */
 }
 
-.formulario__btn:hover {
-	box-shadow: 3px 0px 30px rgba(163,163,163, 1);
-}
-
-.formulario__mensaje-exito {
-	color: #119200;
-	display: none;
-}
-
-.formulario__mensaje-exito-activo {
-	display: block;
-}
-
-/* ----- -----  Estilos para Validacion ----- ----- */
-.formulario__grupo-correcto .formulario__validacion-estado {
-	color: #1ed12d;
-	opacity: 1;
-}
-
-.formulario__grupo-incorrecto .formulario__label {
-	color: #bb2929;
-}
-
-.formulario__grupo-incorrecto .formulario__validacion-estado {
-	color: #bb2929;
-	opacity: 1;
-}
-
-.formulario__grupo-incorrecto .formulario__input {
-	border: 3px solid #bb2929;
-}
-
-
-/* ----- -----  Mediaqueries ----- ----- 
-@media screen and (max-width: 800px) {
-	.formulario {
-		grid-template-columns: 1fr;
-	}
-
-	.formulario__grupo-terminos, 
-	.formulario__mensaje,
-	.formulario__grupo-btn-enviar {
-		grid-column: 1;
-	}
-
-	.formulario__btn {
-		width: 100%;
-	}
-}*/
