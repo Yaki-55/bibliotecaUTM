@@ -1,144 +1,51 @@
-body {
-  background-color: #056684; /* Fondo de la página: gris claro */
-  margin: 20px; /* Margen alrededor del cuerpo de la aplicación */
-  padding: 0; /* Eliminar relleno predeterminado */
-  color: #333333; /* Color de texto: tono oscuro */
+.home-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: auto; /* Ajusta el margen automático para centrar horizontalmente */
+    width: 60%;
+    max-width: 1200px;
+    height: 80%;
+    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
+    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+    position: absolute; /* Coloca el contenedor de manera absoluta */
+    top: 50%; /* Coloca el contenedor en el 50% del eje Y */
+    left: 50%; /* Coloca el contenedor en el 50% del eje X */
+    transform: translate(-50%, -50%); /* Centra el contenedor correctamente */
 }
 
-
-
-
-.Búscador {
-  text-align: center;
-  width: 90%; /* Ancho del contenedor */
-  max-width: 300px; /* Ancho máximo del contenedor */
-  background-color: #f8feff; /* Color de fondo del contenedor */
-  padding: 20px; /* Agregar espacio interno al contenedor */
-  border-radius: 8px; /* Agregar bordes redondeados al contenedor */
-  position: absolute; /* Posición absoluta */
-  top: 50%; /* Centrar verticalmente */
-  transform: translateY(-50%); /* Centrar verticalmente */
-  left: 10%; /* Ajuste de posición horizontal */
-  margin-top: 20px; /* Espacio entre los elementos */
+.home-logo{
+    display: grid;
+    grid-template-columns: min-content auto;
+    gap: 20px;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.Agregar_Usuario {
-  text-align: center;
-  width: 80%; /* Ancho del contenedor */
-  max-width: 300px; /* Ancho máximo del contenedor */
-  background-color: #f8feff; /* Color de fondo del contenedor */
-  padding: 20px; /* Agregar espacio interno al contenedor */
-  border-radius: 8px; /* Agregar bordes redondeados al contenedor */
-  position: absolute; /* Posición absoluta */
-  top: 50%; /* Centrar verticalmente */
-  transform: translateY(-50%); /* Centrar verticalmente */
-  left: 35%; /* Ajuste de posición horizontal */
-  margin-top: 20px; /* Espacio entre los elementos */
-}
-
-.Inventario {
-  text-align: center;
-  width: 90%; /* Ancho del contenedor */
-  max-width: 300px; /* Ancho máximo del contenedor */
-  background-color: #f8fefeff; /* Fondo del contenedor: blanco */
-  padding: 20px; /* Agregar espacio interno al contenedor */
-  border-radius: 8px; /* Agregar bordes redondeados al contenedor */
-  position: absolute; /* Posición absoluta */
-  top: 50%; /* Centrar verticalmente */
-  transform: translateY(-50%); /* Centrar verticalmente */
-  left: 60%; /* Ajuste de posición horizontal */
-  margin-top: 20px; /* Espacio entre los elementos */
-}
-
-.Prestamos {
-  text-align: center;
-  width: 90%; /* Ancho del contenedor */
-  max-width: 300px; /* Ancho máximo del contenedor */
-  background-color: #f8feff; /* Color de fondo del contenedor */
-  padding: 20px; /* Agregar espacio interno al contenedor */
-  border-radius: 8px; /* Agregar bordes redondeados al contenedor */
-  position: absolute; /* Posición absoluta */
-  top: 50%; /* Centrar verticalmente */
-  transform: translateY(-50%); /* Centrar verticalmente */
-  left: 85%; /* Ajuste de posición horizontal */
-  margin-top: 20px; /* Espacio entre los elementos */
-}
-
-
-.Inventario { /* Aplicar el mismo estilo a .Buscador */
-  text-align: center;
-  width: 90%; /* Ancho del contenedor */
-  max-width: 300px; /* Ancho máximo del contenedor */
-  background-color: #f8fefeff; /* Fondo del contenedor: blanco */
-  padding: 20px; /* Agregar espacio interno al contenedor */
-  border-radius: 8px; /* Agregar bordes redondeados al contenedor */
-  position: absolute; /* Posición absoluta */
-  top: 50%; /* Centrar verticalmente */
-  left: 60%; /* Ajuste de posición horizontal */
-  transform: translate(-50%, -50%); /* Centrar el contenedor correctamente */
-}
-
-.Prestamos {
-  text-align: center;
-  width: 90%; /* Ancho del contenedor */
-  max-width: 300px; /* Ancho máximo del contenedor */
-  background-color: #f8feff; /* Color de fondo del contenedor */
-  padding: 20px; /* Agregar espacio interno al contenedor */
-  border-radius: 8px; /* Agregar bordes redondeados al contenedor */
-  position: absolute; /* Posición absoluta */
-  top: 50%; /* Centrar verticalmente */
-  left: 85%; /* Ajuste de posición horizontal */
-  transform: translate(-50%, -50%); /* Centrar el contenedor correctamente */
-}
-
-
-.Inventario h1,
-.Buscador h1 { /* Aplicar el mismo estilo a los títulos dentro de .Inventario y .Buscador */
-  color: #007bff; /* Color del título principal: azul suave */
-}
-
-.Inventario p,
-.Buscador p { /* Aplicar el mismo estilo a los párrafos dentro de .Inventario y .Buscador */
-  margin-bottom: 20px;
-}
-
-.modal {
-  display: inline-block;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* Reducido el margen superior e inferior */
-  padding: 15px; /* Reducido el padding para ocupar menos espacio */
-  border-radius: 8px;
-  width: 70%; /* Reducido el ancho */
-  max-width: 400px; /* Establecido un ancho máximo */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.close-btn {
-  float: right;
-  cursor: pointer;
-}
-
-.home-link {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
-  background-color: #316ba9; /* Color de fondo del enlace: azul suave */
-  color: #fff; /* Color del texto del enlace: blanco */
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.home-link:hover {
-  background-color: #0056b3; /* Color de fondo del enlace al pasar el cursor: azul más oscuro */
-}
+.home-menuImgOpciones {
+    display: grid; /* Activar el modo Grid */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 10fr)); /* Definir las columnas */
+    gap: 10px; /* Espaciado entre elementos */
+    align-items: center; /* Alinear verticalmente los elementos */
+  }
+  
+  .home-menuImgOpciones img {
+    margin-left: 30px;
+    margin-top: 30px;
+    width: 75%; /* Ajustar el ancho de la imagen al ancho de la columna */
+    height: auto; /* Mantener la relación de aspecto de la imagen */
+  }
+  
+  .home-menuNameOpciones {
+    display: flex; /* Activate Flexbox layout */
+    flex-direction: row; /* Arrange items in a row */
+    justify-content: space-around; /* Distribute space evenly between items */
+    align-items: center; /* Align items vertically in the center */
+  }
+  
+  .hmno {
+    /*background-color: #000000;*/
+    color: #000000;
+    flex: 1; /* Allow each item to grow and shrink proportionally */
+    text-align: center; /* Center text within each item */
+  }

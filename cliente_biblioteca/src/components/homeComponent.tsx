@@ -1,50 +1,33 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../css/home.css';
+import React from 'react';
+//import { Link } from 'react-router-dom';
+import '../css/home.css'
 
 const HomeComponent: React.FC = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-
-  const openModal = () => {
-    setModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setModalVisible(false);
-  };
-
   return (
-    <div className="home-wrapper">
-      <div className="Inventario" onClick={openModal}>
-        <h1>Gestión de inventario</h1>
-     
+    <div className="home-container">  
+      <div className='home-logo'>
+        <img src="../../public/img/logoUTM.png" alt="" width="220" height="220" />
+        <h1 className='hmno'>Biblioteca Universitaria</h1>
       </div>
+      
+      <div className='home-menuImgOpciones'>
+        <img src="../../public/img/nuevoUsuario.png" alt="" width="100" height="100" />
+        <img src="../../public/img/buscar.png" alt="" width="100" height="100" />
+        <img src="../../public/img/nuevaRevista.png" alt="" width="100" height="100" />
+        <img src="../../public/img/prestamos.png" alt="" width="100" height="100" />
+      </div>
+      
+      <div className='home-menuNameOpciones'>
+        <div className='hmno'><h2> Nuevo usuario</h2></div>
+        <div className='hmno'><h2> Buscar</h2></div>
+        <div className='hmno'><h2> Agregar</h2></div>
+        <div className='hmno'><h2> Préstamos</h2></div>
+      </div>
+      
 
-      {modalVisible && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close-btn" onClick={closeModal}>&times;</span>
-            <Link to="/libros" className="home-link">Ir a la Gestión de Libros</Link>
-             <p> </p>
-            <Link to="/tesis" className="home-link">Ir a la Gestión de Tesis</Link>
-             <p> </p>
-           <Link to="/revistas" className="home-link">Ir a la Gestión de Revistas Universitarias</Link>
-          </div>
-        </div>
-      )}
+      {/* <p>Este es el sistema de gestión de tu biblioteca.</p>
+      <Link to="/libros" className="home-link">Ir a la Gestión de Libros</Link> */}
 
-      {/* Otros enlaces al mismo nivel */}
-      <Link to="/buscador" className="Búscador">
-        <h1>Búscador</h1>
-      </Link>
-
-      <Link to="/prestamos" className="Agregar_Usuario">
-        <h1>Agregar Usuario</h1>
-      </Link>
-
-      <Link to="/prestamos" className="Prestamos">
-        <h1>Prestamos</h1>
-      </Link>
     </div>
   );
 };
