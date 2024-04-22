@@ -1,7 +1,8 @@
-//import MiComponente from './components/MiComponente'; // Ajusta la ruta de importación según la ubicación de MiComponente.tsx
-//import React from 'react';
 import LibroComponent from './components/libroComponent';
 import HomeComponent from './components/homeComponent';
+import TesisComponent from './components/tesisComponent';
+import RevistaComponent from './components/revistaComponent';
+import BuscadorComponent from './components/buscadorComponent';
 import {
   BrowserRouter as Router,
   Routes,
@@ -14,7 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeComponent />} />
         <Route path="/libros" element={<LibroComponent />} />
-        {/* Puedes agregar más rutas según sea necesario */}
+        <Route path="/tesis" element={<TesisComponent/>} />
+        <Route path="/revistas" element={<RevistaComponent />} />
+        <Route path="/buscador" element={<BuscadorComponent />} />
       </Routes>
     </Router>
   )

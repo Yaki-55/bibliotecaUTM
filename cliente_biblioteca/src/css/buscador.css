@@ -1,0 +1,197 @@
+/* Estilo general del contenedor */
+/* Estilo general del contenedor */
+.buscador-container {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Centra verticalmente los elementos dentro del contenedor */
+  justify-items: center;
+  /* Centra horizontalmente los elementos dentro del contenedor */
+  max-width: 1200px;
+  width: 60%;
+  min-height: 300px;
+  height: 80%;
+  /* margin: 0 auto; */
+  margin: auto;
+  /* Ajusta el margen automático para centrar horizontalmente */
+  position: absolute;
+  /* Coloca el contenedor de manera absoluta */
+  top: 50%;
+  /* Coloca el contenedor en el 50% del eje Y */
+  left: 50%;
+  /* Coloca el contenedor en el 50% del eje X */
+  transform: translate(-50%, -50%);
+  /* Centra el contenedor correctamente */
+}
+
+
+
+/*Centramos barra*/
+.buscador-container input[type="text"] {
+  border: 2px solid #60ab14;
+  border-radius: 4px;
+  font-size: 1.8em;
+  padding: 0.5em;
+
+  padding-left: 8%; /* para cambiar posisicion buscar */
+  /* Espacio para el icono */
+  width: 90%;
+  /* Ajusta este valor según sea necesario */
+  margin-bottom: 1em;
+  display: block;
+  /* Asegura que el elemento sea un bloque y respete el margen automático */
+  margin-left: 0%;
+  margin-right: auto;
+
+  height: 35px;
+  background-color: #c8dce3;
+
+}
+
+.inputBuscar-personalizado {
+  width: 140%;
+  position: relative;
+  left: 20%;
+  /* Ancho de la imagen + espacio adicional */
+  padding-left: 10px;
+}
+
+.imagen-buscar {
+  position: absolute;
+  left: -34%;
+  /* Coloca la imagen en la izquierda */
+  width: 0px;
+  height: 30px;
+  margin-top: 1%;
+}
+
+.inputPersonalizado {
+  width: 100%;
+  margin-left: -270px;
+
+}
+
+
+input {
+  flex: 1;
+  /* Input takes remaining space */
+  padding-left: -70% !important;
+  width: 105% !important;
+}
+
+
+
+/* Estilo para mantener los botones de radio y sus etiquetas en la misma línea */
+.buscador-container label {
+  display: inline-flex;
+  /* Cambia de block a inline-flex */
+  align-items: center;
+  /* Centra el contenido de la etiqueta verticalmente */
+  margin-right: 1em;
+}
+
+/* Contenedor para los filtros y botón de búsqueda */
+.search-options,
+.radio-group {
+  width: 75%;
+  /* Ajustado para alinearse con la barra de búsqueda */
+  margin-bottom: 1em;
+  /* Espacio entre las opciones y el botón de búsqueda */
+  text-align: center;
+  /* Alinea los elementos al centro */
+}
+
+/* Estilo para los botones de radio y sus etiquetas */
+.buscador-container input[type="radio"] {
+  margin-right: 0.5em;
+}
+
+.buscador-container label {
+  margin-right: 1em;
+  font-size: 1.5em;
+}
+
+/* Estilo del botón de búsqueda */
+/* Estilo del botón de búsqueda */
+.search-button {
+  background-color: #28a745;
+  /* Color verde para el botón */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10em;
+  margin-bottom: 1em;
+  width: 200px;
+  /* Ancho fijo para el botón */
+  align-self: center;
+  /* Centra el botón en el contenedor flex */
+}
+
+/* Estilo cuando el botón está desactivado */
+.search-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Estilo para hacer que el botón cambie cuando se pasa el cursor */
+.search-button:hover:not(:disabled) {
+  background-color: #218838;
+  /* Un tono más oscuro de verde al pasar el cursor */
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.results-table th,
+.results-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* logo y título */
+.home-logo {
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 20px;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40%;
+}
+
+.buscador-container-tipos{
+  margin-top: -40px !important;
+  margin-left: -30%;
+}
+
+.salir-libro{
+  background-color: red;
+  color: white;
+  width: 200px;
+  height: 30px;
+  margin-top: -5% !important;
+  margin-left: 20%;
+  font-size: 23px; 
+  text-align: center;
+}
