@@ -1,0 +1,103 @@
+/* Estilo general del contenedor */
+/* Estilo general del contenedor */
+.buscador-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    max-width: 800px;
+    width: 80%;
+    min-height: 300px;
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+  }
+  
+  
+  
+  /*Centramos barra*/
+.buscador-container input[type="text"] {
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    padding: 0.5em;
+    width: 75%; /* Ajusta este valor según sea necesario */
+    margin-bottom: 1em;
+    display: block; /* Asegura que el elemento sea un bloque y respete el margen automático */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Estilo para mantener los botones de radio y sus etiquetas en la misma línea */
+.buscador-container label {
+    display: inline-flex; /* Cambia de block a inline-flex */
+    align-items: center; /* Centra el contenido de la etiqueta verticalmente */
+    margin-right: 1em;
+  }
+  /* Contenedor para los filtros y botón de búsqueda */
+  .search-options,
+  .radio-group {
+    width: 75%; /* Ajustado para alinearse con la barra de búsqueda */
+    margin-bottom: 1em; /* Espacio entre las opciones y el botón de búsqueda */
+    text-align: center; /* Alinea los elementos al centro */
+  }
+  
+  /* Estilo para los botones de radio y sus etiquetas */
+  .buscador-container input[type="radio"] {
+    margin-right: 0.5em;
+  }
+  
+  .buscador-container label {
+    margin-right: 1em;
+    font-size: 1em;
+  }
+  
+  /* Estilo del botón de búsqueda */
+  /* Estilo del botón de búsqueda */
+.search-button {
+    background-color: #28a745; /* Color verde para el botón */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 0.5em 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 200px; /* Ancho fijo para el botón */
+    align-self: center; /* Centra el botón en el contenedor flex */
+  }
+  
+  /* Estilo cuando el botón está desactivado */
+  .search-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Estilo para hacer que el botón cambie cuando se pasa el cursor */
+  .search-button:hover:not(:disabled) {
+    background-color: #218838; /* Un tono más oscuro de verde al pasar el cursor */
+  }
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }

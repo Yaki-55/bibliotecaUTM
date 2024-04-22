@@ -18,7 +18,6 @@ function App() {
         <Route path="/tesis" element={<TesisComponent/>} />
         <Route path="/revistas" element={<RevistaComponent />} />
         <Route path="/buscador" element={<BuscadorComponent />} />
-
       </Routes>
     </Router>
   )

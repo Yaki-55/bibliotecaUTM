@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import client from '../utils/sanityClient'; 
 import '../css/libro.css';
+import { AiFillDelete,AiFillEdit } from "react-icons/ai";
 
 const LibroComponent: React.FC = () => {
   const [libros, setLibros] = useState<any[]>([]); // Define el estado para almacenar los libros
     const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
-    setModalVisible(true);
+    setModalVisible(true,);
   };
 
   const closeModal = () => {
@@ -160,75 +161,117 @@ const LibroComponent: React.FC = () => {
               <td>{libro.cantidadDisponible}</td>
               <td>{libro.esDonado ? 'Sí' : 'No'}</td>
               <td>
-                <button onClick={() => handleDeleteBook(libro._id)}>Eliminar</button>
+                <button  className= "BttEliminar"onClick={() => handleDeleteBook(libro._id)}><AiFillDelete />Eliminar</button>
+                
               </td>
               <td>
-                <button >Editar</button> {/* edición */}
+                <button className= "BttEditar"><AiFillEdit />Editar</button> {/* edición */}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       
-      <a href="/" className="salir-libro">Salir</a> 
 
-      {/* Formulario para agregar un nuevo libro */}
-      <button onClick={openModal}>Agregar Nuevo Libro</button>
+      <div className="Botones-tabla">
+        <button className="salir-libro" onClick={() => window.location.href = '/' }>Salir</button>
+        {/* Formulario para agregar un nuevo libro */}
+        <button className="AgregarLibro" onClick={openModal}>Agregar Nuevo Libro</button>
+      </div> 
+
       {/* Modal */}
       {modalVisible && (
-        <div className="modal">
-          <div className="modal-content">
+        <div className="modal" >
             {/* Formulario para agregar un nuevo libro */}
-            <h2>Agregar Nuevo Libro</h2>
-            
-            <div className="input-group">
-                <label>Título:</label>
-                <input type="text" placeholder="Título" value={newBookTitle} onChange={handleTitleChange} />
+              
+              <div className="formularioRevista" id="formularioRevista"> 
+              
+                <div className="title" >
+                  <p>Agregar Nuevo Libro</p>
+                </div>
+                
+
+                <div className="formulario_revista" id="revista_codigo" >
+                  <label  className="formulario__label">Código: </label>
+                  <div className="formulario_revista-input">
+                  <input type="text" className="formulario__input" placeholder="# Código" value={newBookCode} onChange={handleCodeChange} /> <mark>*</mark>
+                  </div>
+                </div>
+
+                <div className="formulario_revista" id="revista__titulo">
+                  <label className="formulario__label">ISBN: </label>
+                  <div className="formulario_revista-input">
+                    <input type="text" className="formulario__input"  placeholder="ISBN"  value={newBookISBN} onChange={handleISBNChange} /> <mark>*</mark>
+                  </div>
+                </div>
+
+                <div className="formulario_revista" id="revista_fechaPublicacion">
+                  <label className="formulario__label">Edición: </label>
+                  <div className="formulario_revista-input">
+                    <input type="number" className="formulario__input"  placeholder="Edición" value={newBookEdition} onChange={handleEditionChange} />
+                  </div>
+                </div>
+
+      
+                  <div className="formulario_revista" id="revista_fecha">
+                    <label className="formulario__label">Fecha de publicación: </label>
+                    <div className="formulario_revista-input">
+                      <input type="date" className="formulario__input" value={newBookPublicationDate} onChange={handlePublicationDateChange} />
+                    </div>
+                  </div>
+
+                  <div className="formulario_revista" id="revista_NumPaginas">
+                    <label className="formulario__label">Número de páginas: </label>
+                    <div className="formulario_revista-input">
+                      <input type="number" className="formulario__input" placeholder="No. Paginas" value={newBookNumPages} onChange={handleNumPagesChange} />
+                    </div>
+                  </div>
+
+                  <div className="formulario_revista" id="revista_cantidad">
+                    <label  className="formulario__label">Cantidad de Libros: </label>
+                    <div className="formulario_revista-input">
+                      <input type="number" className="formulario__input" placeholder="cantidad" value={newBookAvailableQuantity} onChange={handleAvailableQuantityChange} />
+                    </div>
+                  </div>
+
+                  <div className="formulario_revista" id="revista_Tema">
+                    <label  className="formulario__label">Tema: </label>
+                    <div className="formulario_revista-input">
+                      <input type="text" className="formulario__input" placeholder="Tema" value={newBookTopic} onChange={handleTopicChange} />
+                    </div>
+                  </div>
+
+                  <div className="formulario_revista" id="revista_titulo">
+                    <label  className="formulario__label">Titulo: </label>
+                    <div className="formulario_revista-input">
+                      <input type="text" className="formulario__input"  placeholder="Titulo"  value={newBookTitle} onChange={handleTitleChange} />
+                    </div>
+                  </div>
+
+                  <div className="formulario_revista" id="revista_autor">
+                    <label  className="formulario__label">Autor: </label>
+                    <div className="formulario_revista-input">
+                      <input type="text" className="formulario__input" placeholder="Autor" value={newBookAuthor} onChange={handleAuthorChange} />
+                    </div>
+                  </div>
+
+
+                  <div className="formulario_revista_message" > 
+                  <p><mark>*</mark>En caso de no contar con el código o ISBN marcar con S/N </p> 
+                  </div>
+      
+                  <div className="formulario_revista">
+                    <label  className="formulario__label">Donado:
+                    <input type="checkbox" checked={newBookIsDonated} onChange={handleIsDonatedChange} />
+                    </label>
+                  </div>
+      
+                  <div  className="botones">
+                    <button type="submit" className="formulario__btn1" onClick={closeModal} >Cancelar</button>
+                    <button type="submit" className="formulario__btn2" onClick={handleAddBook} >Aceptar</button>
+                  </div>
+
             </div>
-            <div className="input-group">
-                <label>Autor:</label>
-                <input type="text" placeholder="Autor" value={newBookAuthor} onChange={handleAuthorChange} />
-            </div>
-            <div className="input-group">
-                 <label>Año de Publicación:</label>
-                <input type="number" placeholder="Año de Publicación" value={newBookPublicationDate} onChange={handlePublicationDateChange} />
-            </div>
-            <div className="input-group">
-          <label>ISBN:</label>
-          <input type="text" placeholder="ISBN" value={newBookISBN} onChange={handleISBNChange} />
-        </div>
-        <div className="input-group">
-          <label>Código:</label>
-          <input type="text" placeholder="Código" value={newBookCode} onChange={handleCodeChange} />
-        </div>
-        <div className="input-group">
-          <label>Edición:</label>
-          <input type="number" placeholder="Edición" value={newBookEdition} onChange={handleEditionChange} />
-        </div>
-
-        {/* Fila de campos de número y checkbox */}
-        <div className="input-group">
-          <label>Número de Páginas:</label>
-          <input type="number" placeholder="Número de Páginas" value={newBookNumPages} onChange={handleNumPagesChange} />
-        </div>
-        <div className="input-group">
-          <label>Tema:</label>
-          <input type="text" placeholder="Tema" value={newBookTopic} onChange={handleTopicChange} />
-        </div>
-        <div className="input-group">
-          <label>Cantidad Disponible:</label>
-          <input type="number" placeholder="Cantidad Disponible" value={newBookAvailableQuantity} onChange={handleAvailableQuantityChange} />
-        </div>
-
-        <div className="input-group">
-          <label>Donado:</label>
-          <input type="checkbox" checked={newBookIsDonated} onChange={handleIsDonatedChange} />
-        </div>
-
-        <button className="agregar-libro" onClick={handleAddBook}>Añadir Libro</button>
-
-            <button onClick={closeModal}>Cerrar</button>
-          </div>
         </div>
         
       )}
@@ -237,5 +280,4 @@ const LibroComponent: React.FC = () => {
     </div>
   );
 };
-
 export default LibroComponent;

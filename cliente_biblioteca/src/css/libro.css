@@ -7,8 +7,7 @@ body {
     padding: 20px;
     border-radius: 8px;
     margin: auto; /* Ajusta el margen automático para centrar horizontalmente */
-    width: 90%;
-    max-width: 1200px;
+    width: 85%;
     justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
     align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
     position: absolute; /* Coloca el contenedor de manera absoluta */
@@ -19,6 +18,7 @@ body {
 .libro-container h1 {
     text-align: center;
     color: #1f169f;
+    letter-spacing: 10px;
 }
 
 .libro-container table {
@@ -55,7 +55,22 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-
+.libro-container button.BttEliminar{
+    color: rgb(116, 12, 12);
+}
+/* Estilo para el icono */
+.BttEliminar svg {
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+    font-size: 24px; /* Tamaño del icono, ajusta el valor según tus necesidades */
+}
+.libro-container button.BttEditar{
+    color: rgb(11, 66, 135);
+}
+/* Estilo para el icono */
+.BttEditar svg {
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+    font-size: 24px; /* Tamaño del icono, ajusta el valor según tus necesidades */
+}
 .libro-container button {
     padding: 10px 20px;
     margin: 10px;
@@ -63,12 +78,59 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
+.Botones-tabla{
+    margin-left: 70%;
+}
+.libro-container button.BttEditar,
+.libro-container button.AgregarLibro ,
+.libro-container button.salir-libro 
+{
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+.libro-container button.AgregarLibro{
+    margin: 15px;
+}
+.libro-container button.salir-libro{
+    background-color: #DE1010; /* Azul para agregar */
+    color: white;
+    margin-left: 93%;
+}
+.libro-container button.AgregarLibro{
+    background-color: #0F880D; /* Azul para agregar */
+    color: white;
+    margin-left: 90%;
+}
+.libro-container button.salir-libro,
+.libro-container button.AgregarLibro
+{
+    grid-column: 1 / -1; /* Ocupa ambas columnas */
+    margin-bottom:-130px ;
+    margin-top: -10%;
+    margin: 22px; /* Ajusta el margen entre los botones si lo necesitas */
+    border-radius: 10px;
+}
+.libro-container button.salir-libro:hover,
+.libro-container button.BttEliminar:hover,
+.libro-container button.BttEditar:hover,
+.libro-container button.AgregarLibro:hover {
+    box-shadow: 3px 0px 30px rgb(23, 22, 22);
+}
+.libro-container button.salir-libro:focus,
+.libro-container button.BttEliminar:focus,
+.libro-container button.BttEditar:focus,
+.libro-container button.AgregarLibro:focus {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
 .libro-container .formulario-libro h2 {
     color: black; /* Cambia el color de la letra a negro */
 }
 
-.libro-container .agregar-libro {
-    background-color: #4CAF50; /* Green */
+.libro-container {
+    background-color: #f0f0f0; /* Green */
     color: white;
 }
 
@@ -81,27 +143,163 @@ body {
     align-items: end; /* Alinea los elementos al final de cada fila */
 }
 
-.libro-container .formulario-libro .input-group {
+.libro-container .formulario-libro  {
     display: flex;
     flex-direction: column;
 }
 
-.libro-container .formulario-libro .input-group label {
-    margin-bottom: .5em;
-}
 
-.libro-container .formulario-libro button {
-    grid-column: span 3; /* El botón se extiende a través de las tres columnas */
-}
-
-/* El botón de Salir se coloca al final y abarca las tres columnas */
-.libro-container .salir-libro {
-    grid-column: span 3;
-    justify-self: left; 
-    color: #000;
-}
-
-.libro-container .input-group label {
+.libro-container  label {
     color: #000; /* Esto es negro */
     /* Asegúrate de agregar más estilos aquí si es necesario, como display, margin, etc. */
 }
+/****************************************************************************************************/
+
+.formularioRevista
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0%;
+
+    position: relative; /* Cambia la posición del contenedor */
+    top: -37%; /* Desplaza el contenedor hacia abajo */
+    left: 50%; /* Centra horizontalmente el contenedor */
+    transform: translateX(-50%); /* Centra horizontalmente el contenedor */
+    width: 50%; /* Ancho del contenedor en porcentaje */
+    height: 160%;
+    background-color: #f0f0f0; /* Color de fondo */
+    padding: 2%; /* Espacio interno del contenedor */
+}
+  .formulario_revista{
+    margin-top: 9%;
+    margin-left: 10%;
+  }
+  .title {
+    grid-column: 1 / -1; /* Ocupa ambas columnas */
+    margin-bottom:-130px ; /* Espacio debajo del título */
+    margin-top: -7%;
+    text-align: center;
+    font-size: 400%;
+    
+  }
+
+  .formulario_revista_message {
+    display: grid;
+    grid-template-columns:  1fr;
+    gap: 2%;
+    color: #1A2B96;
+    font-size: 170%;
+    font-weight: bold;
+    margin-left: 7%;
+  }
+  .formulario__label,.title {
+      color: #1A2B96;
+  }
+  .title{
+      font-weight: bold;
+  }
+  
+  .formulario__label {
+      display: block;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 170%;
+      margin-left: 1%;
+  }
+  .formulario_revista label{
+    color: #1A2B96;
+  }
+  mark{
+      background-color: #f0f0f0; /* Cambia el color de fondo de la letra marcada */
+        color: red; /* Cambia el color del texto de la letra marcada */
+      font-size: 30px;
+  }
+  .formulario_tesis-input {
+      position: relative;
+  }
+  
+  .formulario__input {
+      width: 85%;
+      background: #7B7B7B;
+      border: 3px solid transparent;
+      border-radius: 3px;
+      height: 45px;
+      /*line-height: 40px;*/
+      /*padding: 10px 50px 0 10px;*/
+      transition: .3s ease all;
+      font-size: 200%;
+  }
+
+  .formulario_revista input[type="checkbox"]{
+    width: 120px; /* Ancho del checkbox */
+    height: 40px; /* Alto del checkbox */
+    margin-right: 100px; /* Margen a la derecha del checkbox */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el checkbox */
+
+  }
+  .formulario_revista input[type="checkbox"]::placeholder {
+    color: #413f3f;
+  }
+  
+  .formulario__input::placeholder {
+      color: #413f3f;
+      font-size: 90%;
+    }
+  
+  .formulario__input:focus {
+      background: #FFF;
+      border: 5px solid #0075FF;
+      outline: none;
+      box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+  }
+  .formulario_Select:focus{
+      background: #FFF;
+      border: 3px solid #0075FF;
+      outline: none;
+      box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+  }
+  
+  .formulario__btn1{
+      background-color: #DE1010;
+      border-radius: 10%;
+  }
+  .formulario__btn2{
+      background-color:#0F880D;
+  }
+
+  .botones{
+    grid-column: 1 / -1; /* Ocupa ambas columnas */
+    margin-bottom:-130px ;
+    margin-top: -10%;
+    margin-left: 55%;
+}
+  .botones button {
+    margin: 22px; /* Ajusta el margen entre los botones si lo necesitas */
+    border-radius: 25px;
+  }
+  
+  
+  .formulario__btn1,.formulario__btn2 {
+      width: 40%; 
+      height: 35%;
+      font-size: 225%;/*tamaño de letra*/
+      /*background: #000;*/
+      color: #fff;
+      font-weight: bold; /*grosor de letra*/
+      border: none; /*grosor de borde*/
+      
+      /*cursor: pointer;*/
+      transition: .1s ease all; /*duracion de las tranciciones*/
+      
+  }
+  
+  
+  .formulario__btn1:hover {
+      box-shadow: 3px 0px 30px rgb(23, 22, 22);
+  }
+  .formulario__btn2:hover {
+      box-shadow: 3px 0px 30px rgb(23, 22, 22);
+  }
+  
+
+

@@ -4,6 +4,16 @@ import '../css/tesis.css';
 
 const TesisComponent: React.FC = () => {
     const [tesis, setTesis] = useState<any[]>([]); // Define el estado para almacenar las tesis
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const openModal = () => {
+      setModalVisible(true);
+    };
+  
+    const closeModal = () => {
+      setModalVisible(false);
+    };
+
     // Estados para los campos de una nueva tesis
     const [newTesisTitle, setNewTesisTitle] = useState<string>('');
     const [newTesisAuthor, setNewTesisAuthor] = useState<string>('');
@@ -119,49 +129,53 @@ const TesisComponent: React.FC = () => {
                     ))}
                 </tbody>
             </table>
+            <a href="/" className="salir-tesis">Salir</a>
+            <button onClick={openModal}>Agregar Nueva Tesis</button>
+            {/* Modal */}
+            {modalVisible && (
+              <div className="modal">
+                <div className="modal-content">
+                  {/* Formulario para agregar un nuevo libro */}
+                  <h2 className='hmno'>Agregar Nueva Tesis</h2>
 
-            {/* Formulario para agregar una nueva tesis */}
-            <div className="formulario-tesis">
-                <h2>Agregar Nueva Tesis</h2>
-
-                {/* Fila de campos de texto */}
-                <div className="input-group">
-                    <label>Título:</label>
-                    <input type="text" placeholder="Título" value={newTesisTitle} onChange={handleTitleChange} />
-                </div>
-                <div className="input-group">
-                    <label>Autor(es):</label>
-                    <input type="text" placeholder="Autor(es)" value={newTesisAuthor} onChange={handleAuthorChange} />
-                </div>
-                <div className="input-group">
-                    <label>Fecha de Presentación:</label>
-                    <input type="date" value={newTesisPresentationDate} onChange={handlePresentationDateChange} />
-                </div>
-                <div className="input-group">
-                    <label>Instituto:</label>
-                    <input type="text" placeholder="Instituto" value={newTesisInstitute} onChange={handleInstituteChange} />
-                </div>
-
-                {/* Fila de campos de número */}
-                <div className="input-group">
-                    <label>No. de Páginas:</label>
-                    <input type="number" placeholder="No. de Páginas" value={newTesisNumPages} onChange={handleNumPagesChange} />
-                </div>
-                <div className="input-group">
+                  <div className="input-group">
+                      <label>Título:</label>
+                      <input type="text" placeholder="Título" value={newTesisTitle} onChange={handleTitleChange} />
+                  </div>
+                  <div className="input-group">
+                      <label>Autor:</label>
+                      <input type="text" placeholder="Autor" value={newTesisAuthor} onChange={handleAuthorChange} />
+                  </div>
+                  <div className="input-group">
+                       <label>Año de Publicación:</label>
+                      <input type="number" placeholder="Año de Publicación" value={newTesisPresentationDate} onChange={handlePresentationDateChange} />
+                  </div>
+                  <div className="input-group">
                     <label>Código:</label>
                     <input type="text" placeholder="Código" value={newTesisCode} onChange={handleCodeChange} />
-                </div>
-
-                {/* Fila de checkbox */}
-                <div className="input-group">
+                  </div>
+                  <div className="input-group">
+                    <label>Instituto:</label>
+                    <input type="number" placeholder="Edición" value={newTesisInstitute} onChange={handleInstituteChange} />
+                  </div>
+            
+                  {/* Fila de campos de número y checkbox */}
+                  <div className="input-group">
+                    <label>Número de Páginas:</label>
+                    <input type="number" placeholder="Número de Páginas" value={newTesisNumPages} onChange={handleNumPagesChange} />
+                  </div>
+                  <div className="input-group">
                     <label>Donado:</label>
                     <input type="checkbox" checked={newTesisIsDonated} onChange={handleIsDonatedChange} />
-                </div>
+                  </div>
+                  
+                  <button className="agregar-tesis" onClick={handleAddTesis}>Añadir Tesis</button>
+                  
+                      <button onClick={closeModal}>Cerrar</button>
+                    </div>
+                  </div>
 
-                <button className="agregar-tesis" onClick={handleAddTesis}>Añadir Tesis</button>
-                <a href="/" className="salir-libro">Salir</a> 
-            </div>
-            
+            )}
         </div>
     );
 };
