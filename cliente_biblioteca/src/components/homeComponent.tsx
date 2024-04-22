@@ -1,8 +1,19 @@
 import React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 //import { Link } from 'react-router-dom';
 import '../css/home.css'
 
 const HomeComponent: React.FC = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
   return (
     <div className="home-container">  
       <div className='home-logo'>
@@ -19,15 +30,21 @@ const HomeComponent: React.FC = () => {
       
       <div className='home-menuNameOpciones'>
         <div className='hmno'><h2> Nuevo usuario</h2></div>
-        <div className='hmno'><h2> Buscar</h2></div>
-        <div className='hmno'><h2> Agregar</h2></div>
+        <div><Link to="/buscador" className="hmno"><h2>Buscar</h2></Link></div>
+        <div className='hmno' onClick={openModal}><h2>Agregar</h2>{modalVisible && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close-btn" onClick={closeModal}>&times;</span>
+            <Link to="/libros" className="home-link">Agregar libros</Link>
+             <p> </p>
+            <Link to="/tesis" className="home-link">Agregar tesis</Link>
+             <p> </p>
+           <Link to="/revistas" className="home-link">Agregar revistas universitarias</Link>
+          </div>
+        </div>
+      )}</div>
         <div className='hmno'><h2> Préstamos</h2></div>
       </div>
-      
-
-      {/* <p>Este es el sistema de gestión de tu biblioteca.</p>
-      <Link to="/libros" className="home-link">Ir a la Gestión de Libros</Link> */}
-
     </div>
   );
 };

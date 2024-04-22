@@ -136,7 +136,7 @@ const TesisComponent: React.FC = () => {
               <div className="modal">
                 <div className="modal-content">
                   {/* Formulario para agregar un nuevo libro */}
-                  <h2>Agregar Nueva Tesis</h2>
+                  <h2 className='hmno'>Agregar Nueva Tesis</h2>
 
                   <div className="input-group">
                       <label>Título:</label>

@@ -179,7 +179,7 @@ const LibroComponent: React.FC = () => {
         <div className="modal">
           <div className="modal-content">
             {/* Formulario para agregar un nuevo libro */}
-            <h2>Agregar Nuevo Libro</h2>
+            <h2 className='hmno'>Agregar Nuevo Libro</h2>
             
             <div className="input-group">
                 <label>Título:</label>
