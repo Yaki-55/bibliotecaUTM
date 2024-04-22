@@ -8,7 +8,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
+    text-align: center;
     max-width: 800px;
     width: 80%;
     min-height: 300px;
@@ -65,10 +66,10 @@
     padding: 0.5em 1em;
     text-transform: uppercase;
     cursor: pointer;
-    font-weight: bold;
+    
     margin-top: 1em;
     margin-bottom: 1em;
-    width: 200px; /* Ancho fijo para el botón */
+    width: 200px; /* Ancho fijo para el botónfont-weight: bold; */
     align-self: center; /* Centra el botón en el contenedor flex */
   }
   
@@ -100,4 +101,11 @@ body {
   .results-table th, .results-table td {
     border: 1px solid #ddd;
     padding: 8px;
+  }
+
+  .hmno {
+    /*background-color: #000000;*/
+    color: #000000;
+    flex: 1; /* Allow each item to grow and shrink proportionally */
+    text-align: center; /* Center text within each item */
   }

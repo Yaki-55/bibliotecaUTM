@@ -80,18 +80,18 @@ const BuscadorComponent: React.FC = () => {
         <table className="results-table">
             <thead>
             <tr>
-                <th>Autor</th>
-                <th>Título</th>
-                <th>Código</th>
-                <th>Más</th>
+                <th className='hmno'>Autor</th>
+                <th className='hmno'>Título</th>
+                <th className='hmno'>Código</th>
+                <th className='hmno'>Más</th>
             </tr>
             </thead>
             <tbody>
             {libros.map((libro, index) => (
                 <tr key={index}>
-                    <td>{libro.autor}</td>
-                    <td>{libro.titulo}</td>
-                    <td>{libro.codigo}</td>
+                    <td className='hmno'>{libro.autor}</td>
+                    <td className='hmno'>{libro.titulo}</td>
+                    <td className='hmno'>{libro.codigo}</td>
                     <td>
                   {/* Aquí iría el botón o enlace para ver más detalles */}
                     <button>Ver más</button>
@@ -104,10 +104,10 @@ const BuscadorComponent: React.FC = () => {
 
     return (
     <div className="buscador-container">
-        <h1>Hemeroteca/Biblioteca</h1>
+        <h1 className='hmno'>Buscador</h1>
         <form onSubmit={handleSearch}>
         {/* Filtro por Tipo */}
-        <div>
+        <div className='hmno'>
             <input
             type="text"
             value={searchTerm}
@@ -115,7 +115,7 @@ const BuscadorComponent: React.FC = () => {
             placeholder="Buscar..."
             />
         </div>
-        <div>
+        <div className='hmno'>
             Tipo:
             <label>
             <input
@@ -162,7 +162,7 @@ const BuscadorComponent: React.FC = () => {
         {/* Filtro por Título, Autor, Tema */}
         
         
-        <div>
+        <div className='hmno'>
             Buscar por:
             <label>
             <input
