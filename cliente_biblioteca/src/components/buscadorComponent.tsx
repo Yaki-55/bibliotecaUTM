@@ -1,169 +1,250 @@
 import React, { useEffect, useState } from 'react';
-import client from '../utils/sanityClient'; 
-import '../css/tesis.css';
+import client from '../utils/sanityClient';
+import '../css/buscador.css';
 
 const BuscadorComponent: React.FC = () => {
-    const [tesis, setTesis] = useState<any[]>([]); // Define el estado para almacenar las tesis
-    // Estados para los campos de una nueva tesis
-    const [newTesisTitle, setNewTesisTitle] = useState<string>('');
-    const [newTesisAuthor, setNewTesisAuthor] = useState<string>('');
-    const [newTesisPresentationDate, setNewTesisPresentationDate] = useState<string>('');
-    const [newTesisInstitute, setNewTesisInstitute] = useState<string>('');
-    const [newTesisNumPages, setNewTesisNumPages] = useState<number | ''>('');
-    const [newTesisCode, setNewTesisCode] = useState<string>('');
-    const [newTesisIsDonated, setNewTesisIsDonated] = useState<boolean>(false);
-    //const [editingTesis, setEditingTesis] = useState(null);
+    const [libros, setLibros] = useState<any[]>([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchType, setSearchType] = useState('titulo');
+    const [documentType, setDocumentType] = useState(''); // Nuevo estado para el tipo de documento
+    const [mostrarResultados, setMostrarResultados] = useState(false);
 
+    
     useEffect(() => {
-        const fetchTesis = async () => {
-            const query = '*[_type == "tesis"]';
-            const tesisData = await client.fetch(query);
-            console.log('Tesis recuperadas:', tesisData);
-            setTesis(tesisData);
-        };
-        fetchTesis();
+        fetchBooks();
     }, []);
 
-    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTesisTitle(event.target.value);
-    };
-    const handleAuthorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTesisAuthor(event.target.value);
-    };
-    const handlePresentationDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTesisPresentationDate(event.target.value);
-    };
-    const handleInstituteChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTesisInstitute(event.target.value);
-    };
-    const handleNumPagesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const numPages = parseInt(event.target.value, 10);
-        setNewTesisNumPages(numPages >= 0 ? numPages : '');
-    };
-    const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTesisCode(event.target.value);
-    };
-    const handleIsDonatedChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTesisIsDonated(event.target.checked);
+    const fetchBooks = async () => {
+        const query = '*[_type == "libro"]';
+        const fetchedLibros = await client.fetch(query);
+        console.log('Libros recuperados:', fetchedLibros);
+        setLibros(fetchedLibros);
     };
 
-    // Borrar tesis
-    const handleDeleteTesis = async (tesisId: string) => {
-        try {
-            await client.delete(tesisId);
-            setTesis(tesis.filter(tesis => tesis._id !== tesisId));
-        } catch (error) {
-            console.error('Error al eliminar la tesis:', error);
-        }
+    const handleSearchTermChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
     };
 
-    // Añadir una nueva tesis
-    const handleAddTesis = async () => {
-        try {
-            const newTesis = {
-                _type: 'tesis',
-                titulo: newTesisTitle,
-                autor: newTesisAuthor,
-                fechaPresentacion: newTesisPresentationDate,
-                instituto: newTesisInstitute,
-                numeroPaginas: newTesisNumPages ? Number(newTesisNumPages) : undefined,
-                codigo: newTesisCode,
-                donado: newTesisIsDonated,
-            };
-            const result = await client.create(newTesis);
-            setTesis([...tesis, result]);
-            // Restablecer formularios después de la adición
-            setNewTesisTitle('');
-            setNewTesisAuthor('');
-            setNewTesisPresentationDate('');
-            setNewTesisInstitute('');
-            setNewTesisNumPages('');
-            setNewTesisCode('');
-            setNewTesisIsDonated(false);
-        } catch (error) {
-            console.error('Error al agregar la tesis:', error);
-        }
+    const handleSearchTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchType(event.target.value);
     };
+
+    const handleDocumentTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setDocumentType(event.target.value);
+    };
+
+    const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        
+        let typesToSearch = documentType ? [documentType] : ['libro', 'revista', 'tesis'];
+        let query = '';
+    
+        if (searchTerm) {
+            // Ajusta la consulta dependiendo de si "Todo" ha sido seleccionado o un campo específico
+            if (searchType === '') {
+                // "Todo" está seleccionado
+                query = `*[
+                    _type in ${JSON.stringify(typesToSearch)} && (
+                        titulo match "${searchTerm}*" ||
+                        autor match "${searchTerm}*" ||
+                        tema match "${searchTerm}*"
+                    )
+                ]`;
+            } else {
+                // Un campo específico ha sido seleccionado
+                query = `*[
+                    _type in ${JSON.stringify(typesToSearch)} && ${searchType} match "${searchTerm}*"
+                ]`;
+            }
+        } else {
+            // Si no hay término de búsqueda, recopila todos los elementos de todos los tipos
+            query = `*[_type in ${JSON.stringify(typesToSearch)}]`;
+        }
+        
+        try {
+            const searchResults = await client.fetch(query);
+            console.log(searchResults);
+            // Actualiza el estado aquí con los resultados si es necesario
+            setLibros(searchResults); // Actualiza el estado con los resultados
+            setMostrarResultados(true);  //Activa para poder mostrar los resultados
+        } catch (error) {
+            console.error("Error fetching data:", error);
+            setMostrarResultados(false); 
+        }
+        
+        // Limpia el término de búsqueda después de la búsqueda
+        setSearchTerm('');
+    };
+    
+    const renderResultsTable = () => (
+        <table className="results-table">
+            <thead>
+            <tr>
+                <th>Autor</th>
+                <th>Título</th>
+                <th>Código</th>
+                <th>Más</th>
+            </tr>
+            </thead>
+            <tbody>
+            {libros.map((libro, index) => (
+                <tr key={index}>
+                    <td>{libro.autor}</td>
+                    <td>{libro.titulo}</td>
+                    <td>{libro.codigo}</td>
+                    <td>
+                  {/* Aquí iría el botón o enlace para ver más detalles */}
+                    <button>Ver más</button>
+                    </td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
+    );
 
     return (
-        <div className="tesis-container">
-            <h1>Gestión de Tesis</h1>
-            {/* Tabla para listar las tesis */}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Título</th>
-                        <th>Autor(es)</th>
-                        <th>Fecha de Presentación</th>
-                        <th>Instituto</th>
-                        <th>No. de Páginas</th>
-                        <th>Código</th>
-                        <th>Donado</th>
-                        <th>Borrar Tesis</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tesis.map(tesis => (
-                        <tr key={tesis._id}>
-                            <td>{tesis.titulo}</td>
-                            <td>{tesis.autor}</td>
-                            <td>{tesis.fechaPresentacion}</td>
-                            <td>{tesis.instituto}</td>
-                            <td>{tesis.numeroPaginas}</td>
-                            <td>{tesis.codigo}</td>
-                            <td>{tesis.donado ? 'Sí' : 'No'}</td>
-                            <td>
-                                <button onClick={() => handleDeleteTesis(tesis._id)}>Eliminar</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
-            {/* Formulario para agregar una nueva tesis */}
-            <div className="formulario-tesis">
-                <h2>Agregar Nueva Tesis</h2>
-
-                {/* Fila de campos de texto */}
-                <div className="input-group">
-                    <label>Título:</label>
-                    <input type="text" placeholder="Título" value={newTesisTitle} onChange={handleTitleChange} />
-                </div>
-                <div className="input-group">
-                    <label>Autor(es):</label>
-                    <input type="text" placeholder="Autor(es)" value={newTesisAuthor} onChange={handleAuthorChange} />
-                </div>
-                <div className="input-group">
-                    <label>Fecha de Presentación:</label>
-                    <input type="date" value={newTesisPresentationDate} onChange={handlePresentationDateChange} />
-                </div>
-                <div className="input-group">
-                    <label>Instituto:</label>
-                    <input type="text" placeholder="Instituto" value={newTesisInstitute} onChange={handleInstituteChange} />
-                </div>
-
-                {/* Fila de campos de número */}
-                <div className="input-group">
-                    <label>No. de Páginas:</label>
-                    <input type="number" placeholder="No. de Páginas" value={newTesisNumPages} onChange={handleNumPagesChange} />
-                </div>
-                <div className="input-group">
-                    <label>Código:</label>
-                    <input type="text" placeholder="Código" value={newTesisCode} onChange={handleCodeChange} />
-                </div>
-
-                {/* Fila de checkbox */}
-                <div className="input-group">
-                    <label>Donado:</label>
-                    <input type="checkbox" checked={newTesisIsDonated} onChange={handleIsDonatedChange} />
-                </div>
-
-                <button className="agregar-tesis" onClick={handleAddTesis}>Añadir Tesis</button>
-                <a href="/" className="salir-libro">Salir</a> 
-            </div>
-            
+    <div className="buscador-container">
+        <h1>Hemeroteca/Biblioteca</h1>
+        <form onSubmit={handleSearch}>
+        {/* Filtro por Tipo */}
+        <div>
+            <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearchTermChange}
+            placeholder="Buscar..."
+            />
         </div>
-    );
+        <div>
+            Tipo:
+            <label>
+            <input
+                type="radio"
+                name="documentType"
+                value="libro"
+                checked={documentType === 'libro'}
+                onChange={handleDocumentTypeChange}
+            />
+            Libro
+            </label>
+            <label>
+            <input
+                type="radio"
+                name="documentType"
+                value="revista"
+                checked={documentType === 'revista'}
+                onChange={handleDocumentTypeChange}
+            />
+            Revista
+            </label>
+            <label>
+            <input
+                type="radio"
+                name="documentType"
+                value="tesis"
+                checked={documentType === 'tesis'}
+                onChange={handleDocumentTypeChange}
+            />
+            Tesis
+            </label>
+        <label>
+            <input
+                type="radio"
+                name="documentType"
+                value=""  // Representa la opción "Todos"
+                checked={documentType === ''}
+                onChange={handleDocumentTypeChange}
+            />
+            Todos
+        </label>
+        </div>
+        
+        {/* Filtro por Título, Autor, Tema */}
+        
+        
+        <div>
+            Buscar por:
+            <label>
+            <input
+                type="radio"
+                name="searchType"
+                value="titulo"
+                checked={searchType === 'titulo'}
+                onChange={handleSearchTypeChange}
+            />
+            Título
+            </label>
+            <label>
+            <input
+                type="radio"
+                name="searchType"
+                value="autor"
+                checked={searchType === 'autor'}
+                onChange={handleSearchTypeChange}
+            />
+            Autor
+            </label>
+            <label>
+            <input
+                type="radio"
+                name="searchType"
+                value="tema"
+                checked={searchType === 'tema'}
+                onChange={handleSearchTypeChange}
+            />  
+            Tema
+            </label>
+            <label>
+            <input
+                type="radio"
+                name="searchType"
+                value="isbn"
+                checked={searchType === 'isbn'}
+                onChange={handleSearchTypeChange}
+            />
+            ISBN
+            </label>
+            <label>
+            <input
+                type="radio"
+                name="searchType"
+                value="issn"
+                checked={searchType === 'issn'}
+                onChange={handleSearchTypeChange}
+            />
+            ISSN
+            </label>
+            <label>
+            <input
+                type="radio"
+                name="searchType"
+                value="codigo"
+                checked={searchType === 'codigo'}
+                onChange={handleSearchTypeChange}
+            />
+            Código
+            </label>
+            <label>
+            <input
+                type="radio"
+                name="searchType"
+                value=""
+                checked={searchType === ''}
+                onChange={handleSearchTypeChange}
+            />
+            Todo
+            </label>
+        </div>
+        <button type="submit" className="search-button">Buscar</button>
+        </form>
+        {/* Tabla de libros aquí */}
+        {/* Renderiza la tabla de resultados si hay resultados para mostrar */}
+        {mostrarResultados && renderResultsTable()}
+        <a href="/" className="salir-libro">Salir</a> 
+
+    </div>
+    
+  );
 };
 
 export default BuscadorComponent;
