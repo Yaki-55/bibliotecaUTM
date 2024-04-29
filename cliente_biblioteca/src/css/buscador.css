@@ -123,8 +123,8 @@ body {
   top: 8%; /* Desplaza el contenedor hacia abajo */
   left: 50%; /* Centra horizontalmente el contenedor */
   transform: translateX(-50%); /* Centra horizontalmente el contenedor */
-  width: 50%; /* Ancho del contenedor en porcentaje */
-  height: 50%;
+  width: 60%; /* Ancho del contenedor en porcentaje */
+  height: 60%;
   background-color: #f0f0f0; /* Color de fondo */
   padding: 2%; /* Espacio interno del contenedor */
 }
