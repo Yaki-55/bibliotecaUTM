@@ -5,8 +5,6 @@ import '../css/buscador.css';
 
 
 const BuscadorComponent: React.FC = () => {
-    
-
     const [libros, setLibros] = useState<any[]>([]);
     const [modalVisible, setModalVisible] = useState(false);
     const [secondModalVisible, setSecondModalVisible] = useState(false); // Ejemplo de estado para el segundo modal
@@ -141,7 +139,7 @@ const BuscadorComponent: React.FC = () => {
           width="150"
           height="150"
         />
-        <h1>Hemeroteca/Biblioteca</h1>
+        <h1 className="hmno">Hemeroteca/Biblioteca</h1>
       </div>
       <br></br>
         <form onSubmit={handleSearch}>
@@ -358,7 +356,7 @@ const BuscadorComponent: React.FC = () => {
 
             <div className="formularioRevista" id="formularioRevista">
               <div className="formulario_revista" id="revista_titulo">
-                <h2> hola hola</h2>
+                <h2 className="hmno"> hola hola</h2>
               </div>
 
 
