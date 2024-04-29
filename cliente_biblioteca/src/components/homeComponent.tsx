@@ -24,16 +24,20 @@ const HomeComponent: React.FC = () => {
 
       <div className='home-menuImgOpciones'>
         <Link to="/nuevoUsuario">
-          <img src="../../public/img/nuevoUsuario.png" alt="" width="150" height="150" />
+          <img src="../../public/img/nuevoUsuario.png" alt="" width="100" height="100" />
+          <h2 className='hmno'>Nuevo usuario</h2>
         </Link>
         <Link to="/buscador">
           <img src="../../public/img/buscar.png" alt="" width="100" height="100" />
+          <h2 className='hmno'>Buscar</h2>
         </Link>
-        <div onClick={openModal}>
+        <div onClick={openModal} className='home-menuImgOpciones'>
           <img src="../../public/img/nuevaRevista.png" alt="" width="100" height="100" />
+          <h2 className='hmno'>Crear</h2>
         </div>
         <Link to="/prestamos">
           <img src="../../public/img/prestamos.png" alt="" width="100" height="100" />
+          <h2 className='hmno'>Prestamos</h2>
         </Link>
       </div>
 
