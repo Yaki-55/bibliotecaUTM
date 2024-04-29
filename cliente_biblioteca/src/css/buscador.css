@@ -203,6 +203,11 @@ mark{
     background-color:#0F880D;
 }
 
+.formulario__btn3{
+  background-color: #DE1010;
+  border-radius: 10%;
+}
+
 .botones{
   grid-column: 1 / -1; /* Ocupa ambas columnas */
   margin-bottom:-130px ;

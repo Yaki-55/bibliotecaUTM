@@ -9,6 +9,8 @@ const BuscadorComponent: React.FC = () => {
 
     const [libros, setLibros] = useState<any[]>([]);
     const [modalVisible, setModalVisible] = useState(false);
+    const [secondModalVisible, setSecondModalVisible] = useState(false); // Ejemplo de estado para el segundo modal
+
     const [searchTerm, setSearchTerm] = useState('');
     const [searchType, setSearchType] = useState('titulo');
     const [documentType, setDocumentType] = useState(''); // Nuevo estado para el tipo de documento
@@ -17,10 +19,18 @@ const BuscadorComponent: React.FC = () => {
 
 
     const openModal = () => {
-        setModalVisible(true);
+      setModalVisible(true);
     };
     const closeModal = () => {
         setModalVisible(false);
+    };
+    
+    const openSecondModal = () => {
+      setSecondModalVisible(true);
+    };
+
+    const closeSecondModal = () => {
+      setSecondModalVisible(false);
     };
 
     
@@ -333,12 +343,32 @@ const BuscadorComponent: React.FC = () => {
       
                   <div  className="botones">
                     <button type="submit" className="formulario__btn1" onClick={closeModal} >Cancelar</button>
-                    <button type="submit" className="formulario__btn2"  >Reservar</button>
+                    <button type="submit" className="formulario__btn2" onClick={() => {
+                      closeModal();
+                      openSecondModal();
+                    }}>Reservar</button>
                   </div>
-
             </div>
         </div>
         
+      )}
+
+      {secondModalVisible && (
+        <div className='modal'>
+
+            <div className="formularioRevista" id="formularioRevista">
+              <div className="formulario_revista" id="revista_titulo">
+                <h2> hola hola</h2>
+              </div>
+
+
+              <div  className="botones">
+                <button type="submit" className="formulario__btn3" onClick={closeSecondModal} >Cancelar</button>
+              </div>                  
+            </div>
+      
+        </div>
+
       )}
 
     </div>
