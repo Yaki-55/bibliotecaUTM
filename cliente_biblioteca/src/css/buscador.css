@@ -1,108 +1,50 @@
 /* Estilo general del contenedor */
 /* Estilo general del contenedor */
 .buscador-container {
-  background-color: #f4f4f4;
+  background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  display: grid;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+  padding: 2em;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  /* Centra verticalmente los elementos dentro del contenedor */
-  justify-items: center;
-  /* Centra horizontalmente los elementos dentro del contenedor */
-  max-width: 1200px;
-  width: 60%;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px;
+  width: 86%;
   min-height: 300px;
-  height: 80%;
-  /* margin: 0 auto; */
-  margin: auto;
-  /* Ajusta el margen automático para centrar horizontalmente */
-  position: absolute;
-  /* Coloca el contenedor de manera absoluta */
-  top: 50%;
-  /* Coloca el contenedor en el 50% del eje Y */
-  left: 50%;
-  /* Coloca el contenedor en el 50% del eje X */
-  transform: translate(-50%, -50%);
-  /* Centra el contenedor correctamente */
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
 }
 
 
 
 /*Centramos barra*/
 .buscador-container input[type="text"] {
-  border: 2px solid #60ab14;
+  border: 2px solid #ccc;
   border-radius: 4px;
-  font-size: 1.8em;
-  padding: 0.5em;
-
-  padding-left: 8%; /* para cambiar posisicion buscar */
-  /* Espacio para el icono */
-  width: 60%;
-  /* Ajusta este valor según sea necesario */
+  font-size: 1em;
+  padding: 2% 4%;
+  padding: 2% 1% 2% 6%;    /* arriba | derecha | abajo | izquierda */
+  width: 90%; /* Ajusta este valor según sea necesario */
   margin-bottom: 1em;
-  display: block;
-  /* Asegura que el elemento sea un bloque y respete el margen automático */
-  margin-left: 1  0%;
+  display: block; /* Asegura que el elemento sea un bloque y respete el margen automático */
+  margin-left: auto;
   margin-right: auto;
-
-  height: 35px;
-  background-color: #c8dce3;
-
 }
-
-.inputBuscar-personalizado {
-  width: 140%;
-  position: relative;
-  left: 20%;
-  /* Ancho de la imagen + espacio adicional */
-  padding-left: 10px;
-}
-
-.imagen-buscar {
-  position: absolute;
-  left: -12%;
-  /* Coloca la imagen en la izquierda */
-  width: 0px;
-  height: 30px;
-  margin-top: 1%;
-}
-
-.inputPersonalizado {
-  width: 100%;
-  margin-left: -15%;
-
-}
-
-
-input {
-  flex: 1;
-  /* Input takes remaining space */
-  padding-left: -70% !important;
-  /* width: 105% !important; */
-}
-
-
-
 /* Estilo para mantener los botones de radio y sus etiquetas en la misma línea */
 .buscador-container label {
-  display: inline-flex;
-  /* Cambia de block a inline-flex */
-  align-items: center;
-  /* Centra el contenido de la etiqueta verticalmente */
+  display: inline-flex; /* Cambia de block a inline-flex */
+  align-items: center; /* Centra el contenido de la etiqueta verticalmente */
   margin-right: 1em;
 }
-
 /* Contenedor para los filtros y botón de búsqueda */
 .search-options,
 .radio-group {
-  width: 75%;
-  /* Ajustado para alinearse con la barra de búsqueda */
-  margin-bottom: 1em;
-  /* Espacio entre las opciones y el botón de búsqueda */
-  text-align: center;
-  /* Alinea los elementos al centro */
+  width: 75%; /* Ajustado para alinearse con la barra de búsqueda */
+  margin-bottom: 1em; /* Espacio entre las opciones y el botón de búsqueda */
+  text-align: center; /* Alinea los elementos al centro */
 }
 
 /* Estilo para los botones de radio y sus etiquetas */
@@ -112,28 +54,24 @@ input {
 
 .buscador-container label {
   margin-right: 1em;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 /* Estilo del botón de búsqueda */
-
+/* Estilo del botón de búsqueda */
 .search-button {
-  background-color: #28a745;
-  /* Color verde para el botón */
+  background-color: #28a745; /* Color verde para el botón */
   border: none;
   border-radius: 4px;
   color: white;
   padding: 0.5em 1em;
   text-transform: uppercase;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 20px;
-  margin-top: 8%;
+  
+  margin-top: 1em;
   margin-bottom: 1em;
-  width: 200px;
-  /* Ancho fijo para el botón */
-  align-self: center;
-  /* Centra el botón en el contenedor flex */
+  width: 200px; /* Ancho fijo para el botónfont-weight: bold; */
+  align-self: center; /* Centra el botón en el contenedor flex */
 }
 
 /* Estilo cuando el botón está desactivado */
@@ -144,15 +82,11 @@ input {
 
 /* Estilo para hacer que el botón cambie cuando se pasa el cursor */
 .search-button:hover:not(:disabled) {
-  background-color: #218838;
-  /* Un tono más oscuro de verde al pasar el cursor */
+  background-color: #218838; /* Un tono más oscuro de verde al pasar el cursor */
 }
-
-html,
-body {
+html, body {
   height: 100%;
   margin: 0;
-  width: 100%;
 }
 
 body {
@@ -160,17 +94,157 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 .results-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20%;
 }
 
-.results-table th,
-.results-table td {
+.results-table th, .results-table td {
   border: 1px solid #ddd;
   padding: 8px;
+}
+
+.hmno {
+  /*background-color: #000000;*/
+  color: #000000;
+  flex: 1; /* Allow each item to grow and shrink proportionally */
+  text-align:left; /* Center text within each item */
+}
+
+/****************************************************************************************************/
+
+.formularioRevista
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0%;
+
+  position: relative; /* Cambia la posición del contenedor */
+  top: 8%; /* Desplaza el contenedor hacia abajo */
+  left: 50%; /* Centra horizontalmente el contenedor */
+  transform: translateX(-50%); /* Centra horizontalmente el contenedor */
+  width: 50%; /* Ancho del contenedor en porcentaje */
+  height: 50%;
+  background-color: #f0f0f0; /* Color de fondo */
+  padding: 2%; /* Espacio interno del contenedor */
+}
+.formulario_revista{
+  margin-top: 9%;
+  margin-left: 10%;
+}
+.title {
+  grid-column: 1 / -1; /* Ocupa ambas columnas */
+  margin-bottom:-130px ; /* Espacio debajo del título */
+  margin-top: -7%;
+  text-align: center;
+  font-size: 400%;
+  
+}
+
+.formulario_revista_message {
+  display: grid;
+  grid-template-columns:  1fr;
+  gap: 2%;
+  color: #1A2B96;
+  font-size: 170%;
+  font-weight: bold;
+  margin-left: 7%;
+}
+.formulario__label,.title {
+    color: #1A2B96;
+}
+.title{
+    font-weight: bold;
+}
+
+.formulario__label {
+    display: block;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 170%;
+    margin-left: 1%;
+}
+.formulario_revista label{
+  color: #1A2B96;
+}
+mark{
+    background-color: #f0f0f0; /* Cambia el color de fondo de la letra marcada */
+      color: red; /* Cambia el color del texto de la letra marcada */
+    font-size: 30px;
+}
+.formulario_tesis-input {
+    position: relative;
+}
+
+.formulario__input {
+    width: 80%;
+    background: #7B7B7B;
+    border: 3px solid transparent;
+    border-radius: 3px;
+    height: 40px;
+    /*line-height: 40px;*/
+    /*padding: 10px 50px 0 10px;*/
+    transition: .3s ease all;
+    font-size: 200%;
+}
+
+.formulario_revista input[type="checkbox"]{
+  width: 120px; /* Ancho del checkbox */
+  height: 40px; /* Alto del checkbox */
+  margin-right: 100px; /* Margen a la derecha del checkbox */
+  cursor: pointer; /* Cambiar el cursor al pasar sobre el checkbox */
+
+}
+.formulario__btn1{
+    background-color: #DE1010;
+    border-radius: 10%;
+}
+.formulario__btn2{
+    background-color:#0F880D;
+}
+
+.botones{
+  grid-column: 1 / -1; /* Ocupa ambas columnas */
+  margin-bottom:-130px ;
+  margin-top: -10%;
+  margin-left: 50%;
+}
+.botones button {
+  margin: 22px; /* Ajusta el margen entre los botones si lo necesitas */
+  border-radius: 25px;
+}
+
+
+.formulario__btn1,.formulario__btn2 {
+    width: 30%; 
+    height: 25%;
+    font-size: 130%;/*tamaño de letra*/
+    /*background: #000;*/
+    color: #fff;
+    font-weight: bold; /*grosor de letra*/
+    border: none; /*grosor de borde*/
+    
+    /*cursor: pointer;*/
+    transition: .1s ease all; /*duracion de las tranciciones*/
+    
+}
+
+
+.formulario__btn1:hover {
+    box-shadow: 3px 0px 30px rgb(23, 22, 22);
+}
+.formulario__btn2:hover {
+    box-shadow: 3px 0px 30px rgb(23, 22, 22);
+}
+
+.imagen-buscar {
+  position: absolute;
+  left: -12%;
+  /* Coloca la imagen en la izquierda */
+  width: 0px;
+  height: 25px;
+  margin-top: .5%;
+  margin-left: 21%;
 }
 
 /* logo y título */
@@ -181,57 +255,4 @@ body {
   justify-content: space-evenly;
   align-items: center;
   height: 40%;
-}
-
-.buscador-container-tipos{
-  margin-top: -40px !important;
-  /* margin-left: -30%; */
-}
-
-.salir-libro{
-  background-color: red;
-  border-radius: 3px;
-  color: white;
-  width: 200px;
-  height: 30px;
-  margin-top: 51% !important;
-  margin-left: 20%;
-  font-size: 20px;
-  text-align: center;
-  align-self: center;
-  padding: 0.4em 1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 1em;
-
-  position: absolute;
-}
-
-/* Estilo cuando el botón está desactivado */
-.salir-libro:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Estilo para hacer que el botón cambie cuando se pasa el cursor */
-.salir-libro:hover:not(:disabled) {
-  background-color: #ca5013;
-  /* Un tono más oscuro de verde al pasar el cursor */
-}
-
-
-.hmno{
-  
-  font-size: 20px;
-  background-color: #007bff;
-}
-
-#label1{
-  font-size: 20px;
-  font-weight: bold;
-}
-
-#label2{
-  font-size: 20px;
 }
