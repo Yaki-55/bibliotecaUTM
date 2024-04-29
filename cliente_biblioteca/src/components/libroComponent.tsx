@@ -5,7 +5,7 @@ import { AiFillDelete,AiFillEdit } from "react-icons/ai";
 
 const LibroComponent: React.FC = () => {
   const [libros, setLibros] = useState<any[]>([]); // Define el estado para almacenar los libros
-    const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
     setModalVisible(true,);

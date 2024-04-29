@@ -3,6 +3,7 @@ import HomeComponent from './components/homeComponent';
 import TesisComponent from './components/tesisComponent';
 import RevistaComponent from './components/revistaComponent';
 import BuscadorComponent from './components/buscadorComponent';
+
 import {
   BrowserRouter as Router,
   Routes,

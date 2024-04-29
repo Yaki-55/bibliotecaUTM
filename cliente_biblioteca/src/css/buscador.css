@@ -5,7 +5,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  display: flex;
+  display: grid;
   flex-direction: column;
   align-items: center;
   /* Centra verticalmente los elementos dentro del contenedor */
@@ -39,12 +39,12 @@
 
   padding-left: 8%; /* para cambiar posisicion buscar */
   /* Espacio para el icono */
-  width: 90%;
+  width: 60%;
   /* Ajusta este valor según sea necesario */
   margin-bottom: 1em;
   display: block;
   /* Asegura que el elemento sea un bloque y respete el margen automático */
-  margin-left: 0%;
+  margin-left: 1  0%;
   margin-right: auto;
 
   height: 35px;
@@ -62,7 +62,7 @@
 
 .imagen-buscar {
   position: absolute;
-  left: -34%;
+  left: -12%;
   /* Coloca la imagen en la izquierda */
   width: 0px;
   height: 30px;
@@ -71,7 +71,7 @@
 
 .inputPersonalizado {
   width: 100%;
-  margin-left: -270px;
+  margin-left: -15%;
 
 }
 
@@ -80,7 +80,7 @@ input {
   flex: 1;
   /* Input takes remaining space */
   padding-left: -70% !important;
-  width: 105% !important;
+  /* width: 105% !important; */
 }
 
 
@@ -116,7 +116,7 @@ input {
 }
 
 /* Estilo del botón de búsqueda */
-/* Estilo del botón de búsqueda */
+
 .search-button {
   background-color: #28a745;
   /* Color verde para el botón */
@@ -127,7 +127,8 @@ input {
   text-transform: uppercase;
   cursor: pointer;
   font-weight: bold;
-  margin-top: 10em;
+  font-size: 20px;
+  margin-top: 8%;
   margin-bottom: 1em;
   width: 200px;
   /* Ancho fijo para el botón */
@@ -151,6 +152,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  width: 100%;
 }
 
 body {
@@ -162,6 +164,7 @@ body {
 .results-table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 20%;
 }
 
 .results-table th,
@@ -182,16 +185,53 @@ body {
 
 .buscador-container-tipos{
   margin-top: -40px !important;
-  margin-left: -30%;
+  /* margin-left: -30%; */
 }
 
 .salir-libro{
   background-color: red;
+  border-radius: 3px;
   color: white;
   width: 200px;
   height: 30px;
-  margin-top: -5% !important;
+  margin-top: 51% !important;
   margin-left: 20%;
-  font-size: 23px; 
+  font-size: 20px;
   text-align: center;
+  align-self: center;
+  padding: 0.4em 1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 1em;
+
+  position: absolute;
+}
+
+/* Estilo cuando el botón está desactivado */
+.salir-libro:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Estilo para hacer que el botón cambie cuando se pasa el cursor */
+.salir-libro:hover:not(:disabled) {
+  background-color: #ca5013;
+  /* Un tono más oscuro de verde al pasar el cursor */
+}
+
+
+.hmno{
+  
+  font-size: 20px;
+  background-color: #007bff;
+}
+
+#label1{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#label2{
+  font-size: 20px;
 }

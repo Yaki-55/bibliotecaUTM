@@ -2,44 +2,16 @@ import React, { useEffect, useState } from "react";
 import client from "../utils/sanityClient";
 import "../css/buscador.css";
 
-const BuscadorComponent: React.FC = () => {
+const verBusquedaComponent: React.FC = () => {
   const [libros, setLibros] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchType, setSearchType] = useState("titulo");
+  const [searchType, handleSearchTypeChange] = useState("titulo");
   const [documentType, setDocumentType] = useState(""); // Nuevo estado para el tipo de documento
   const [mostrarResultados, setMostrarResultados] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedLibro, setSelectedLibro] = useState(null); // Add state variable
-
-
-  // const openModal = () => {
-  //   setModalVisible(true);
-  // };
-
-  const openModal = (libroSeleccionado) => { // Add parameter 'libroSeleccionado'
-    setModalVisible(true);
-    setSelectedLibro(libroSeleccionado); // Store the selected book
-  };
-  
-
-  const closeModal = () => {
-    setModalVisible(false);
-  };
 
   useEffect(() => {
     fetchBooks();
   }, []);
-
-  useEffect(() => {
-    const fetchBooks = async () => {
-      const query = '*[_type == "libro"]';
-      const libros = await client.fetch(query);
-      console.log('Libros recuperados:', libros);
-      setLibros(libros);
-    };
-    fetchBooks();
-  }, []);
-
 
   const fetchBooks = async () => {
     const query = '*[_type == "libro"]';
@@ -54,11 +26,11 @@ const BuscadorComponent: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchTypeChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setSearchType(event.target.value);
-  };
+  // const handleSearchTypeChange = (
+  //   event: React.ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   setSearchType(event.target.value);
+  // };
 
   const handleDocumentTypeChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -129,37 +101,7 @@ const BuscadorComponent: React.FC = () => {
                     <td className='hmno'>{libro.codigo}</td>
             <td>
               {/* Aquí iría el botón o enlace para ver más detalles */}
-              {/* <button onClick={openModal}>Ver más</button> */}
-              <button onClick={() => openModal(libro)}>Ver más</button>
-              {modalVisible && (
-                <div className="modal">
-                  <div className="modal-content">
-                    {/* Formulario para mostra un libro/tesis/revista especifico */}
-                    <h2 className='hmno'>Detalles</h2>
-                    <div>
-                      <div>
-                        <label id="label1">Autor: </label>
-                        <label id="label2">{selectedLibro.autor}</label>                        
-                      </div>
-                      <div>
-                        <label id="label1">Título: </label>
-                        <label id="label2">{selectedLibro.titulo}</label>                         
-                      </div>
-                      <div>
-                        <label id="label1" >Fecha de Publicación: </label>
-                        <label id="label2">{selectedLibro.fechaPublicacion}</label>                        
-                      </div>
-                      <div>
-                        <label id="label1">Edición: </label>
-                        <label id="label2">{selectedLibro.edicion}</label>                         
-                      </div>
-                    </div>
-                    <button onClick={closeModal}>Cerrar</button>
-                  </div>
-                </div>
-
-              )}
-
+              <button>Ver más</button>
             </td>
           </tr>
         ))}
@@ -337,4 +279,4 @@ const BuscadorComponent: React.FC = () => {
   );
 };
 
-export default BuscadorComponent;
+export default verBusquedaComponent;
