@@ -2,12 +2,36 @@ import React, { useEffect, useState } from 'react';
 import client from '../utils/sanityClient';
 import '../css/buscador.css';
 
+
+
 const BuscadorComponent: React.FC = () => {
+    
+
     const [libros, setLibros] = useState<any[]>([]);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [secondModalVisible, setSecondModalVisible] = useState(false); // Ejemplo de estado para el segundo modal
+
     const [searchTerm, setSearchTerm] = useState('');
     const [searchType, setSearchType] = useState('titulo');
     const [documentType, setDocumentType] = useState(''); // Nuevo estado para el tipo de documento
     const [mostrarResultados, setMostrarResultados] = useState(false);
+    const [libroSeleccionado, setLibroSeleccionado] = useState<any | null>(null); // Estado para almacenar el libro seleccionado
+
+
+    const openModal = () => {
+      setModalVisible(true);
+    };
+    const closeModal = () => {
+        setModalVisible(false);
+    };
+    
+    const openSecondModal = () => {
+      setSecondModalVisible(true);
+    };
+
+    const closeSecondModal = () => {
+      setSecondModalVisible(false);
+    };
 
     
     useEffect(() => {
@@ -31,6 +55,11 @@ const BuscadorComponent: React.FC = () => {
 
     const handleDocumentTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setDocumentType(event.target.value);
+    };
+
+    const handleViewDetails = (libro: any) => {
+        setLibroSeleccionado(libro); // Actualiza el estado con el libro seleccionado
+        openModal(); // Abre el modal
     };
 
     const handleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -88,13 +117,14 @@ const BuscadorComponent: React.FC = () => {
             </thead>
             <tbody>
             {libros.map((libro, index) => (
+                
                 <tr key={index}>
                     <td className='hmno'>{libro.autor}</td>
                     <td className='hmno'>{libro.titulo}</td>
                     <td className='hmno'>{libro.codigo}</td>
                     <td>
                   {/* Aquí iría el botón o enlace para ver más detalles */}
-                    <button>Ver más</button>
+                    <button onClick={() => handleViewDetails(libro)} >Ver más</button>
                     </td>
                 </tr>
             ))}
@@ -104,16 +134,37 @@ const BuscadorComponent: React.FC = () => {
 
     return (
     <div className="buscador-container">
-        <h1 className='hmno'>Buscador</h1>
+      <div className="home-logo">
+        <img
+          src="../../public/img/logoUTM.png"
+          alt=""
+          width="150"
+          height="150"
+        />
+        <h1>Hemeroteca/Biblioteca</h1>
+      </div>
+      <br></br>
         <form onSubmit={handleSearch}>
         {/* Filtro por Tipo */}
-        <div className='hmno'>
-            <input
-            type="text"
-            value={searchTerm}
-            onChange={handleSearchTermChange}
-            placeholder="Buscar..."
+
+        <div className="inputBuscar-personalizado">
+          <div className="imagen-buscar">
+            <img
+              src="../../public/img/buscar.png"
+              alt="Buscar"
+              width="40px"
+              height="40px"
             />
+          </div>
+          <div className="inputPersonalizado">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={handleSearchTermChange}
+              placeholder="Buscar..."
+              autoComplete="off"
+            />
+          </div>
         </div>
         <div className='hmno'>
             Tipo:
@@ -241,6 +292,84 @@ const BuscadorComponent: React.FC = () => {
         {/* Renderiza la tabla de resultados si hay resultados para mostrar */}
         {mostrarResultados && renderResultsTable()}
         <a href="/" className="salir-libro">Salir</a> 
+
+
+        {/* Modal */}
+      {modalVisible && (
+        <div className="modal" >
+            {/* Formulario para agregar un nuevo libro */}
+              
+              <div className="formularioRevista" id="formularioRevista"> 
+
+
+                <div className="formulario_revista" id="revista_fechaPublicacion">
+                  <label className="formulario__label">Edición: </label>
+                  <div className="formulario_revista-input">
+                    <input type="number" className="formulario__input" value={libroSeleccionado?.edicion || ''} />
+                  </div>
+                </div>
+
+      
+                  <div className="formulario_revista" id="revista_fecha">
+                    <label className="formulario__label">Fecha de publicación: </label>
+                    <div className="formulario_revista-input">
+                      <input type="date" className="formulario__input" value={libroSeleccionado?.fechaPublicacion || ''}  />
+                    </div>
+                  </div>
+
+
+
+                  <div className="formulario_revista" id="revista_Tema">
+                    <label  className="formulario__label">Tema: </label>
+                    <div className="formulario_revista-input">
+                      <input type="text" className="formulario__input" value={libroSeleccionado?.tema|| ''} />
+                    </div>
+                  </div>
+
+                  <div className="formulario_revista" id="revista_titulo">
+                    <label  className="formulario__label">Titulo: </label>
+                    <div className="formulario_revista-input">
+                      <input type="text" className="formulario__input" value={libroSeleccionado?.titulo || ''} />
+                    </div>
+                  </div>
+
+                  <div className="formulario_revista" id="revista_autor">
+                    <label  className="formulario__label">Autor: </label>
+                    <div className="formulario_revista-input">
+                      <input type="text" className="formulario__input"   value={libroSeleccionado?.autor || ''}/>
+                    </div>
+                  </div>
+
+      
+                  <div  className="botones">
+                    <button type="submit" className="formulario__btn1" onClick={closeModal} >Cancelar</button>
+                    <button type="submit" className="formulario__btn2" onClick={() => {
+                      closeModal();
+                      openSecondModal();
+                    }}>Reservar</button>
+                  </div>
+            </div>
+        </div>
+        
+      )}
+
+      {secondModalVisible && (
+        <div className='modal'>
+
+            <div className="formularioRevista" id="formularioRevista">
+              <div className="formulario_revista" id="revista_titulo">
+                <h2> hola hola</h2>
+              </div>
+
+
+              <div  className="botones">
+                <button type="submit" className="formulario__btn3" onClick={closeSecondModal} >Cancelar</button>
+              </div>                  
+            </div>
+      
+        </div>
+
+      )}
 
     </div>
     
