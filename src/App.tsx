@@ -29,7 +29,6 @@ function App() {
         <Route path="/nuevoUsuario" element={<UsuarioComponent />} />
         <Route path="/reservas/:id" element={<ReservaQRComponent />} />
         <Route path="/prestamos" element={<ReservasComponent />} />
-
       </Routes>
     </Router>
   )
