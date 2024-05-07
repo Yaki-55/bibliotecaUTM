@@ -143,7 +143,7 @@ const BuscadorComponent: React.FC = () => {
       //const nuevaUrlReserva = `localhost:5173/reservas/`+ resultado._id;
       //console.log("URL: ", nuevaUrlReserva);
       //setUrlReserva(nuevaUrlReserva);
-      window.location.href = 'http://localhost:5173/reservas/'+ resultado._id ;
+      window.location.href = '/reservas/'+ resultado._id ;
       //setShowQR(true);
     } catch (error) {
       // Si hay algún error, imprimirlo en la consola
