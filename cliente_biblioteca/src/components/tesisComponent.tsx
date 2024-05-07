@@ -129,7 +129,7 @@ const TesisComponent: React.FC = () => {
                     ))}
                 </tbody>
             </table>
-            <a href="/" className="salir-tesis">Salir</a>
+            <a href="/home" className="salir-tesis">Salir</a>
             <button onClick={openModal}>Agregar Nueva Tesis</button>
             {/* Modal */}
             {modalVisible && (

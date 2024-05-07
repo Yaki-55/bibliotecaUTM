@@ -1,51 +1,54 @@
-/* libroComponent.css */
-body {
-    background-color: #007bff; /* Este es un azul genérico, ajusta el color como desees */
-}
+/* Estilo general para el contenedor de libros */
 .libro-container {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Fondo gris claro para coherencia */
     padding: 20px;
     border-radius: 8px;
-    margin: auto; /* Ajusta el margen automático para centrar horizontalmente */
-    width: 85%;
-    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
-    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
-    position: absolute; /* Coloca el contenedor de manera absoluta */
-    top: 50%; /* Coloca el contenedor en el 50% del eje Y */
-    left: 50%; /* Coloca el contenedor en el 50% del eje X */
-    transform: translate(-50%, -50%); /* Centra el contenedor correctamente */
+    margin: auto; /* Centrado horizontal */
+    width: 90%;
+    max-width: 1200px; /* Ancho máximo para controlar la expansión */
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna */
+    align-items: center; /* Alineación vertical al centro */
+    position: absolute; /* Uso de posición absoluta para el centrado */
+    top: 75%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajuste fino del centrado */
 }
+
+/* Estilos para el título dentro del contenedor */
 .libro-container h1 {
     text-align: center;
-    color: #1f169f;
-    letter-spacing: 10px;
+    color: #1f169f; /* Color oscuro para el título */
+    margin-bottom: 20px; /* Espacio debajo del título */
 }
 
+/* Estilos para la tabla de libros */
 .libro-container table {
-    position: center;
-
     width: 100%;
-    max-width: 100%; /* Asegura que la tabla no sea más ancha que su contenedor */
     border-collapse: collapse;
-    margin-top: 20px;
-    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es muy ancha */
+    margin-top: 20px; /* Espacio después del título o botones */
+    overflow-x: auto; /* Permite desplazamiento horizontal si es necesario */
 }
-.libro-container th, .libro-container td {
-    border: 1px solid #000000;
+
+/* Estilos para las celdas y encabezados */
+.libro-container th,
+.libro-container td {
+    border: 1px solid #000; /* Borde negro para mejor contraste */
     padding: 6px;
     text-align: left;
-    color: black;
+    color: black; /* Texto negro para mejor legibilidad */
 }
 
 .libro-container th {
-    background-color: #666;
-    color: white;
+    background-color: #666; /* Fondo oscuro para los encabezados */
+    color: white; /* Texto blanco para contraste */
 }
 
 .libro-container td {
-    background-color: #fff;
+    background-color: #fff; /* Fondo blanco para las celdas */
 }
 
+/* Estilos para los inputs y botones en el formulario */
 .libro-container input[type="text"],
 .libro-container input[type="number"],
 .libro-container input[type="date"],
@@ -55,251 +58,146 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
-.libro-container button.BttEliminar{
-    color: rgb(116, 12, 12);
-}
-/* Estilo para el icono */
-.BttEliminar svg {
-    margin-right: 5px; /* Espacio entre el icono y el texto */
-    font-size: 24px; /* Tamaño del icono, ajusta el valor según tus necesidades */
-}
-.libro-container button.BttEditar{
-    color: rgb(11, 66, 135);
-}
-/* Estilo para el icono */
-.BttEditar svg {
-    margin-right: 5px; /* Espacio entre el icono y el texto */
-    font-size: 24px; /* Tamaño del icono, ajusta el valor según tus necesidades */
-}
+
 .libro-container button {
     padding: 10px 20px;
     margin: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    background-color: #4CAF50; /* Verde para acciones positivas como agregar o editar */
+    color: white;
 }
-.Botones-tabla{
-    margin-left: 70%;
+
+.libro-container button:hover {
+    background-color: #367C2B; /* Un verde más oscuro para el efecto hover */
 }
-.libro-container button.BttEditar,
-.libro-container button.AgregarLibro ,
-.libro-container button.salir-libro 
-{
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+
+/* Estilo para el enlace de salida */
+.libro-container .salir-libro {
+    background-color: #DE1010; /* Rojo para indicar una acción de salida o cancelación */
+    color: white;
     padding: 10px 20px;
-}
-.libro-container button.AgregarLibro{
-    margin: 15px;
-}
-.libro-container button.salir-libro{
-    background-color: #DE1010; /* Azul para agregar */
-    color: white;
-    margin-left: 93%;
-}
-.libro-container button.AgregarLibro{
-    background-color: #0F880D; /* Azul para agregar */
-    color: white;
-    margin-left: 90%;
-}
-.libro-container button.salir-libro,
-.libro-container button.AgregarLibro
-{
-    grid-column: 1 / -1; /* Ocupa ambas columnas */
-    margin-bottom:-130px ;
-    margin-top: -10%;
-    margin: 22px; /* Ajusta el margen entre los botones si lo necesitas */
-    border-radius: 10px;
-}
-.libro-container button.salir-libro:hover,
-.libro-container button.BttEliminar:hover,
-.libro-container button.BttEditar:hover,
-.libro-container button.AgregarLibro:hover {
-    box-shadow: 3px 0px 30px rgb(23, 22, 22);
-}
-.libro-container button.salir-libro:focus,
-.libro-container button.BttEliminar:focus,
-.libro-container button.BttEditar:focus,
-.libro-container button.AgregarLibro:focus {
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-}
-.libro-container .formulario-libro h2 {
-    color: black; /* Cambia el color de la letra a negro */
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    align-self: flex-end; /* Alinea el botón de salir a la derecha */
 }
 
-.libro-container {
-    background-color: #f0f0f0; /* Green */
-    color: white;
-}
-
-
-/* Estilos para organizar el formulario en tres columnas */
+/* Estilos adicionales para organizar el contenido */
 .libro-container .formulario-libro {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-    gap: 20px; /* Espacio entre las columnas */
-    align-items: end; /* Alinea los elementos al final de cada fila */
-}
-
-.libro-container .formulario-libro  {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Organiza los elementos del formulario en columna */
+}
+
+.libro-container .formulario-libro .input-group {
+    margin-bottom: 10px; /* Espacio entre grupos de entrada */
+}
+
+.libro-container .formulario-libro .input-group label {
+    margin-bottom: 5px; /* Espacio debajo de cada etiqueta */
 }
 
 
-.libro-container  label {
-    color: #000; /* Esto es negro */
-    /* Asegúrate de agregar más estilos aquí si es necesario, como display, margin, etc. */
+/* Estilo para el modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    z-index: 1000;
 }
-/****************************************************************************************************/
 
-.formularioRevista
-{
+/* Estilo para el formulario dentro del modal */
+.formularioLibro {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0%;
-
-    position: relative; /* Cambia la posición del contenedor */
-    top: -37%; /* Desplaza el contenedor hacia abajo */
-    left: 50%; /* Centra horizontalmente el contenedor */
-    transform: translateX(-50%); /* Centra horizontalmente el contenedor */
-    width: 50%; /* Ancho del contenedor en porcentaje */
-    height: 160%;
-    background-color: #f0f0f0; /* Color de fondo */
-    padding: 2%; /* Espacio interno del contenedor */
+    grid-template-columns: repeat(2, 1fr); /* Divide en dos columnas */
+    grid-template-rows: repeat(5, 1fr); /* Divide en cinco filas */
+    gap: 20px; /* Espacio entre columnas */
+    width: 60%; /* Ancho del formulario */
+    max-width: 800px; /* Ancho máximo del formulario */
+    background-color: #fff; /* Color de fondo */
+    border-radius: 8px; /* Borde redondeado */
+    padding: 20px;
 }
-  .formulario_revista{
-    margin-top: 9%;
-    margin-left: 10%;
-  }
-  .title {
-    grid-column: 1 / -1; /* Ocupa ambas columnas */
-    margin-bottom:-130px ; /* Espacio debajo del título */
-    margin-top: -7%;
+
+/* Estilo para el título del formulario dentro del modal */
+.formularioLibro .title p {
     text-align: center;
-    font-size: 400%;
-    
-  }
-
-  .formulario_revista_message {
-    display: grid;
-    grid-template-columns:  1fr;
-    gap: 2%;
     color: #1A2B96;
-    font-size: 170%;
-    font-weight: bold;
-    margin-left: 7%;
-  }
-  .formulario__label,.title {
-      color: #1A2B96;
-  }
-  .title{
-      font-weight: bold;
-  }
-  
-  .formulario__label {
-      display: block;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 170%;
-      margin-left: 1%;
-  }
-  .formulario_revista label{
-    color: #1A2B96;
-  }
-  mark{
-      background-color: #f0f0f0; /* Cambia el color de fondo de la letra marcada */
-        color: red; /* Cambia el color del texto de la letra marcada */
-      font-size: 30px;
-  }
-  .formulario_tesis-input {
-      position: relative;
-  }
-  
-  .formulario__input {
-      width: 85%;
-      background: #7B7B7B;
-      border: 3px solid transparent;
-      border-radius: 3px;
-      height: 45px;
-      /*line-height: 40px;*/
-      /*padding: 10px 50px 0 10px;*/
-      transition: .3s ease all;
-      font-size: 200%;
-  }
-
-  .formulario_revista input[type="checkbox"]{
-    width: 120px; /* Ancho del checkbox */
-    height: 40px; /* Alto del checkbox */
-    margin-right: 100px; /* Margen a la derecha del checkbox */
-    cursor: pointer; /* Cambiar el cursor al pasar sobre el checkbox */
-
-  }
-  .formulario_revista input[type="checkbox"]::placeholder {
-    color: #413f3f;
-  }
-  
-  .formulario__input::placeholder {
-      color: #413f3f;
-      font-size: 90%;
-    }
-  
-  .formulario__input:focus {
-      background: #FFF;
-      border: 5px solid #0075FF;
-      outline: none;
-      box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
-  }
-  .formulario_Select:focus{
-      background: #FFF;
-      border: 3px solid #0075FF;
-      outline: none;
-      box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
-  }
-  
-  .formulario__btn1{
-      background-color: #DE1010;
-      border-radius: 10%;
-  }
-  .formulario__btn2{
-      background-color:#0F880D;
-  }
-
-  .botones{
-    grid-column: 1 / -1; /* Ocupa ambas columnas */
-    margin-bottom:-130px ;
-    margin-top: -10%;
-    margin-left: 55%;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
-  .botones button {
-    margin: 22px; /* Ajusta el margen entre los botones si lo necesitas */
-    border-radius: 25px;
-  }
-  
-  
-  .formulario__btn1,.formulario__btn2 {
-      width: 40%; 
-      height: 35%;
-      font-size: 225%;/*tamaño de letra*/
-      /*background: #000;*/
-      color: #fff;
-      font-weight: bold; /*grosor de letra*/
-      border: none; /*grosor de borde*/
-      
-      /*cursor: pointer;*/
-      transition: .1s ease all; /*duracion de las tranciciones*/
-      
-  }
-  
-  
-  .formulario__btn1:hover {
-      box-shadow: 3px 0px 30px rgb(23, 22, 22);
-  }
-  .formulario__btn2:hover {
-      box-shadow: 3px 0px 30px rgb(23, 22, 22);
-  }
-  
 
+/* Estilo para los campos del formulario */
+.formulario_libro-input {
+    margin-bottom: 20px;
+}
 
+/* Estilo para las etiquetas del formulario */
+.formulario__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Estilo para los inputs del formulario */
+.formulario__input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilo para los botones del formulario */
+/* Ajustes para los botones del formulario */
+.formulario__btn1,
+.formulario__btn2 {
+    margin-top: 20px; /* Añade margen superior */
+}
+
+/* Ajustes para los botones del formulario en la segunda fila */
+.second-form .formulario__btn1,
+.second-form .formulario__btn2 {
+    margin-top: 0; /* Elimina el margen superior */
+}
+
+/* Estilo para el segundo formulario dentro del modal */
+.second-form {
+    display: none; /* Oculta el segundo formulario por defecto */
+}
+
+/* Estilo para el botón que cambia entre formularios */
+.change-form-btn {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Estilo para el botón que cambia entre formularios al pasar el cursor */
+.change-form-btn:hover {
+    background-color: #ff9800;
+}
+
+.formulario__btn1 {
+    margin-top: 20px; /* Añade margen superior */
+    background-color: #000;
+    color: #000;
+}
+
+/* Estilo para el segundo botón del formulario */
+.formulario__btn2 {
+    margin-top: 20px; /* Añade margen superior */
+    background-color: #000;
+    color: #000;
+}

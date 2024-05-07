@@ -1,0 +1,143 @@
+/* Estilo general del contenedor */
+.buscador-container {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px; /* Establecer un ancho máximo */
+    width: 100%;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Estilo para mantener los botones de radio y sus etiquetas en la misma línea */
+.buscador-container label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1em;
+    font-size: 1.5em;
+}
+
+/* Estilo del botón de búsqueda */
+.search-button,
+.exit-button {
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 0.5em 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1em;
+    width: 200px;
+    align-self: center;
+}
+
+.exit-button {
+    background-color: #f00202;
+    margin-left: 1em; /* Ajuste de margen a la izquierda */
+}
+
+/* Estilo cuando el botón está desactivado */
+.search-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Estilo para hacer que el botón cambie cuando se pasa el cursor */
+.search-button:hover:not(:disabled) {
+    background-color: #218838;
+}
+.results-table-container {
+    width: 100%;
+    max-width: 1000px; /* Establecer un ancho máximo */
+    overflow-x: auto; /* Agregar barras de desplazamiento horizontal si es necesario */
+    overflow-y: auto; /* Agregar barras de desplazamiento vertical si es necesario */
+    margin-top: 20px;
+    height: 300px; /* Establece una altura máxima para el contenedor */
+    border-radius: 8px; /* Esquinas redondeadas */
+}
+.results-table th {
+    background-color: #ddd2d2; /* Color de fondo para las celdas del encabezado */
+}
+
+
+.results-table th, .results-table td {
+    padding: 8px;
+    border: 1px solid #ddd; /* Borde de las celdas */
+}
+.results-table td {
+    color: black; /* Establece el color de texto a negro */
+}
+
+/* Estilos para los botones de radio y sus etiquetas */
+.buscador-container input[type="radio"] {
+    margin-right: 0.5em;
+}
+
+/* Centramos el contenedor de los tipos de búsqueda */
+.buscador-container-tipos {
+    margin-top: -40px;
+    margin-left: auto; /* Ajuste de margen izquierdo */
+    margin-right: auto; /* Ajuste de margen derecho */
+    text-align: center; /* Alineación del texto al centro */
+}
+
+
+.buscador-form {
+    width: 100%;
+    max-width: 600px; /* Establecer un ancho máximo */
+    margin-bottom: 1em;
+}
+
+/* Estilo para el contenedor de la barra de búsqueda */
+.inputPersonalizado {
+    margin: 0 auto; /* Esto centrará el div que contiene la barra de búsqueda */
+    width: fit-content; /* Esto ajustará el ancho del div al contenido */
+  }
+
+  .inputPersonalizado input[type="text"] {
+    padding-left: 50px; /* Ajusta el valor según sea necesario para mover el texto a la derecha */
+  }
+.search-input {
+    background-image: url('../../public/img/buscar.png'); /* Agrega la imagen como fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: 10px center; /* Posición de la imagen */
+    padding-left: 40px; /* Ajuste el espacio a la izquierda del texto */
+    border: 2px solid #60ab14;
+    border-radius: 4px;
+    font-size: 1.2em;
+    padding: 0.5em;
+    width: 100%; /* O ajusta el ancho según sea necesario */
+    max-width: 400px; /* Establecer un ancho máximo */
+    height: 40px;
+    background-color: #c8dce3;
+    background-size: 30px; /* Tamaño de la imagen reducido */
+}
+
+.titulo {
+    color: black;
+}
+
+.filtro_letra{
+    color: rgb(91, 64, 64);
+}
+
+.oraoraora label {
+    color: black; /* Cambia 'black' por cualquier color que prefieras */
+}
+
+.search-input{
+    color: rgb(44, 74, 195);
+}
+.tabla_letra{
+    color:black;
+}

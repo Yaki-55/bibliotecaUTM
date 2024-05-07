@@ -158,7 +158,7 @@ const RevistaComponent: React.FC = () => {
                     ))}
                 </tbody>
             </table>
-        <a href="/" className="salir-revista">Salir</a> 
+        <a href="/home" className="salir-revista">Salir</a> 
         {/* Formulario para agregar una nueva revista */}
         <button onClick={openModal}>Agregar Nueva Revista</button>
         {/* Modal */}

@@ -1,0 +1,83 @@
+.reservas-container {
+  background-color: #f4f4f4; /* Color de fondo gris claro */
+  padding: 20px;
+  border-radius: 8px;
+  margin: auto; /* Centra horizontalmente */
+  width: 90%;
+  max-width: 1200px;
+  justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
+  align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+  position: absolute; /* Posición absoluta */
+  top: 50%; /* Centra verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Centra correctamente */
+}
+
+.reservas-container h1 {
+  text-align: center;
+  color: #1f169f; /* Color del texto */
+}
+
+.reservas-container table {
+  width: 100%;
+  max-width: 100%; /* Asegura que la tabla no sea más ancha que su contenedor */
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es muy ancha */
+}
+
+.reservas-container th, .reservas-container td {
+  border: 1px solid #000000; /* Borde */
+  padding: 6px;
+  text-align: left;
+  color: black; /* Color del texto */
+}
+
+.reservas-container th {
+  background-color: #666; /* Color de fondo del encabezado */
+  color: white; /* Color del texto del encabezado */
+}
+
+.reservas-container td {
+  background-color: #fff; /* Color de fondo de las celdas de la tabla */
+}
+
+.reservas-container input[type="text"],
+.reservas-container input[type="number"],
+.reservas-container input[type="date"],
+.reservas-container input[type="checkbox"] {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.reservas-container button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.reservas-container .modal {
+  /* Estilos del modal aquí */
+}
+
+.reservas-container .modal-content {
+  /* Estilos del contenido del modal aquí */
+}
+
+.reservas-container .modal-content label {
+  color: #000; /* Color del texto de las etiquetas */
+}
+
+.reservas-container .modal-content button {
+  /* Estilos de los botones del modal aquí */
+}
+
+.reservas-container .salir-reservas {
+  grid-column: span 3;
+  color: #000;
+  justify-self: left;
+}

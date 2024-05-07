@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/home.css';
+import { FaSignOutAlt } from "react-icons/fa"; 
 
 const HomeComponent: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -25,20 +27,21 @@ const HomeComponent: React.FC = () => {
       <div className='home-menuImgOpciones'>
         <Link to="/nuevoUsuario">
           <img src="../../public/img/nuevoUsuario.png" alt="" width="100" height="100" />
-          <h2 className='hmno'>Nuevo usuario</h2>
+          <p>Usuarios</p>
         </Link>
         <Link to="/buscador">
           <img src="../../public/img/buscar.png" alt="" width="100" height="100" />
-          <h2 className='hmno'>Buscar</h2>
+          <p>Buscador</p>
         </Link>
-        <div onClick={openModal} className='home-menuImgOpciones'>
+        <div onClick={openModal} className="home-link2"> {/* Agregamos la clase home-link */}
           <img src="../../public/img/nuevaRevista.png" alt="" width="100" height="100" />
-          <h2 className='hmno'>Crear</h2>
+          <p>Nueva Revista</p>
         </div>
         <Link to="/prestamos">
           <img src="../../public/img/prestamos.png" alt="" width="100" height="100" />
-          <h2 className='hmno'>Prestamos</h2>
+          <p>Préstamos</p>
         </Link>
+        
       </div>
 
       <div className='home-menuNameOpciones'>
@@ -52,15 +55,16 @@ const HomeComponent: React.FC = () => {
         <div className="modal">
           <div className="modal-content">
             <span className="close-btn" onClick={closeModal}>&times;</span>
-            <Link to="/revistas" className="home-link">Agregar revistas universitarias</Link>
+            <Link to="/revistas" className="home-link3">Agregar revistas universitarias</Link>
             <p></p>
-            <Link to="/libros" className="home-link">Agregar libros</Link>
+            <Link to="/libros" className="home-link3">Agregar libros</Link>
             <p></p>
-            <Link to="/tesis" className="home-link">Agregar tesis</Link>
+            <Link to="/tesis" className="home-link3">Agregar tesis</Link>
             <p></p>
           </div>
-        </div>
-      )}
+        </div>)
+      }
+      <Link to="/login" className="home-link"> <FaSignOutAlt /> </Link>    
     </div>
   );
 };

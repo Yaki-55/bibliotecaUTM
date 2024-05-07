@@ -1,135 +1,160 @@
 import React, { useEffect, useState } from 'react';
-import client from '../utils/sanityClient'; 
+import client from '../utils/sanityClient';
 import '../css/libro.css';
-import { AiFillDelete,AiFillEdit } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
-const LibroComponent: React.FC = () => {
-  const [libros, setLibros] = useState<any[]>([]); // Define el estado para almacenar los libros
-  const [modalVisible, setModalVisible] = useState(false);
+const LibroComponente: React.FC = () => {
+  const [libros, setLibros] = useState<any[]>([]);
+  const [addModalVisible, setAddModalVisible] = useState(false);
+  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [newTitulo, setNewTitulo] = useState<string>('');
+  const [newAutor, setNewAutor] = useState<string>('');
+  const [newFechaPublicacion, setNewFechaPublicacion] = useState<string>('');
+  const [newISBN, setNewISBN] = useState<string>('');
+  const [newCodigo, setNewCodigo] = useState<string>('');
+  const [newEdicion, setNewEdicion] = useState<number | undefined>(undefined);
+  const [newNumPaginas, setNewNumPaginas] = useState<number | undefined>(undefined);
+  const [newTema, setNewTema] = useState<string>('');
+  const [newCantidadDisponible, setNewCantidadDisponible] = useState<number | undefined>(undefined);
+  const [newEsDonado, setNewEsDonado] = useState<boolean>(false);
+  const [editingLibro, setEditingLibro] = useState<any>(null);
 
-  const openModal = () => {
-    setModalVisible(true,);
+  const openAddModal = () => {
+    setAddModalVisible(true);
   };
 
-  const closeModal = () => {
-    setModalVisible(false);
+  const openEditModal = (libro: any) => {
+    setEditingLibro(libro); // Establecer el libro que se va a editar
+    setNewTitulo(libro.titulo);
+    setNewAutor(libro.autor);
+    setNewFechaPublicacion(libro.fechaPublicacion);
+    setNewISBN(libro.isbn);
+    setNewCodigo(libro.codigo);
+    setNewEdicion(libro.edicion || 0);
+    setNewNumPaginas(libro.numPaginas || 0);
+    setNewTema(libro.tema || '');
+    setNewCantidadDisponible(libro.cantidadDisponible || 0);
+    setNewEsDonado(libro.esDonado || false);
+    setEditModalVisible(true); // Abrir el modal de editar libro
   };
 
-  // Estados para los campos de un nuevo libro
-  const [newBookTitle, setNewBookTitle] = useState<string>('');
-  const [newBookAuthor, setNewBookAuthor] = useState<string>('');
-  const [newBookPublicationDate, setNewBookPublicationDate] = useState<string>('');
-  const [newBookISBN, setNewBookISBN] = useState<string>('');
-  const [newBookCode, setNewBookCode] = useState<string>('');
-  const [newBookEdition, setNewBookEdition] = useState<number | ''>('');
-  const [newBookNumPages, setNewBookNumPages] = useState<number | ''>('');
-  const [newBookTopic, setNewBookTopic] = useState<string>('');
-  const [newBookAvailableQuantity, setNewBookAvailableQuantity] = useState<number | ''>('');
-  const [newBookIsDonated, setNewBookIsDonated] = useState<boolean>(false);
+  const closeAddModal = () => {
+    setAddModalVisible(false);
+  };
+
+  const closeEditModal = () => {
+    setEditModalVisible(false);
+  };
 
   useEffect(() => {
-    const fetchBooks = async () => {
+    const fetchLibros = async () => {
       const query = '*[_type == "libro"]';
       const libros = await client.fetch(query);
-      console.log('Libros recuperados:', libros);
       setLibros(libros);
     };
-    fetchBooks();
+    fetchLibros();
   }, []);
 
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBookTitle(event.target.value);
-  };
-
-  const handleAuthorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBookAuthor(event.target.value);
-  };
-
-  const handlePublicationDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBookPublicationDate(event.target.value);
-  };
-
-  const handleISBNChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBookISBN(event.target.value);
-  };
-
-  const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBookCode(event.target.value);
-  };
-
-  const handleEditionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Asegúrate de convertir la entrada a número si es necesario
-    const edition = parseInt(event.target.value, 10);
-    setNewBookEdition(edition >= 0 ? edition : '');
-  };
-
-  const handleNumPagesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Similar a la edición, convierte la entrada a número
-    const numPages = parseInt(event.target.value, 10);
-    setNewBookNumPages(numPages >= 0 ? numPages : '');
-  };
-
-  const handleTopicChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBookTopic(event.target.value);
-  };
-
-  const handleAvailableQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const quantity = parseInt(event.target.value, 10);
-    setNewBookAvailableQuantity(quantity >= 0 ? quantity : '');
-  };
-
-  const handleIsDonatedChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewBookIsDonated(event.target.checked);
-  };
-
-  //borrar libro
-  const handleDeleteBook = async (bookId: string) => {
+  const handleDeleteLibro = async (libroId: string) => {
     try {
-      await client.delete(bookId);
-      setLibros(libros.filter(libro => libro._id !== bookId));
+      await client.delete(libroId);
+      setLibros(libros.filter(libro => libro._id !== libroId));
     } catch (error) {
       console.error('Error al eliminar el libro:', error);
     }
   };
 
-  //añadir un nuevo libro
-  const handleAddBook = async () => {
+  const handleAddLibro = async () => {
     try {
-      const newBook = {
+      const newLibro = {
         _type: 'libro',
-        titulo: newBookTitle,
-        autor: newBookAuthor,
-        fechaPublicacion: newBookPublicationDate,
-        isbn: newBookISBN,
-        codigo: newBookCode,
-        edicion: newBookEdition ? Number(newBookEdition) : undefined, // Convirtiendo a número si no está vacío
-        numPaginas: newBookNumPages ? Number(newBookNumPages) : undefined,
-        tema: newBookTopic,
-        cantidadDisponible: newBookAvailableQuantity ? Number(newBookAvailableQuantity) : undefined,
-        esDonado: newBookIsDonated,
+        titulo: newTitulo,
+        autor: newAutor,
+        fechaPublicacion: newFechaPublicacion,
+        isbn: newISBN,
+        codigo: newCodigo,
+        edicion: newEdicion,
+        numPaginas: newNumPaginas,
+        tema: newTema,
+        cantidadDisponible: newCantidadDisponible,
+        esDonado: newEsDonado,
       };
-      const result = await client.create(newBook);
+      const result = await client.create(newLibro);
       setLibros([...libros, result]);
-      // Restablecer formularios después de la adición
-      setNewBookTitle('');
-      setNewBookAuthor('');
-      setNewBookPublicationDate('');
-      setNewBookISBN('');
-      setNewBookCode('');
-      setNewBookEdition('');
-      setNewBookNumPages('');
-      setNewBookTopic('');
-      setNewBookAvailableQuantity('');
-      setNewBookIsDonated(false);
+      setNewTitulo('');
+      setNewAutor('');
+      setNewFechaPublicacion('');
+      setNewISBN('');
+      setNewCodigo('');
+      setNewEdicion(undefined);
+      setNewNumPaginas(undefined);
+      setNewTema('');
+      setNewCantidadDisponible(undefined);
+      setNewEsDonado(false);
+      closeAddModal();
     } catch (error) {
       console.error('Error al agregar el libro:', error);
     }
   };
 
+  const handleEditLibro = async () => {
+  try {
+    // Verificar si se ha seleccionado un libro para editar
+    if (!editingLibro) {
+      console.error('No se ha seleccionado ningún libro para editar.');
+      return;
+    }
+
+    // Construir el objeto de libro actualizado con los datos del formulario
+    const updatedLibro = {
+      _type: 'libro',
+      _id: editingLibro._id,
+      titulo: newTitulo || editingLibro.titulo,
+      autor: newAutor || editingLibro.autor,
+      fechaPublicacion: newFechaPublicacion || editingLibro.fechaPublicacion,
+      isbn: newISBN || editingLibro.isbn,
+      codigo: newCodigo || editingLibro.codigo,
+      edicion: newEdicion || editingLibro.edicion,
+      numPaginas: newNumPaginas || editingLibro.numPaginas,
+      tema: newTema || editingLibro.tema,
+      cantidadDisponible: newCantidadDisponible || editingLibro.cantidadDisponible,
+      esDonado: newEsDonado || editingLibro.esDonado,
+    };
+
+    // Realizar la llamada para actualizar el libro en la base de datos
+    const response = await client
+      .patch(editingLibro._id)
+      .set(updatedLibro)
+      .commit(); // Confirmar la transacción
+
+    // Verificar si la actualización fue exitosa
+    if (response) {
+      console.log('Libro actualizado:', updatedLibro);
+
+      // Actualizar la lista de libros localmente
+      const updatedLibros = libros.map(libro =>
+        libro._id === editingLibro._id ? updatedLibro : libro
+      );
+
+      // Actualizar el estado de libros con la lista actualizada
+      setLibros(updatedLibros);
+
+      // Limpiar el libro en edición y cerrar el modal
+      setEditingLibro(null);
+      setEditModalVisible(false);
+    } else {
+      console.error('Error al actualizar el libro:', response);
+    }
+  } catch (error) {
+    console.error('Error al editar el libro:', error);
+  }
+};
+
+
   return (
     <div className="libro-container">
       <h1>Gestión de Libros</h1>
-      {/* Tabla para listar los libros */}
+      <button onClick={openAddModal}>Agregar Nuevo Libro</button>
       <table>
         <thead>
           <tr>
@@ -143,8 +168,7 @@ const LibroComponent: React.FC = () => {
             <th>Tema</th>
             <th>Cantidad Disponible</th>
             <th>Donado</th>
-            <th>Borrar Libro</th>
-            <th>Editar Libro</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -161,123 +185,167 @@ const LibroComponent: React.FC = () => {
               <td>{libro.cantidadDisponible}</td>
               <td>{libro.esDonado ? 'Sí' : 'No'}</td>
               <td>
-                <button  className= "BttEliminar"onClick={() => handleDeleteBook(libro._id)}><AiFillDelete />Eliminar</button>
-                
-              </td>
-              <td>
-                <button className= "BttEditar"><AiFillEdit />Editar</button> {/* edición */}
+                <button onClick={() => handleDeleteLibro(libro._id)}><AiFillDelete />Eliminar</button>
+                <button onClick={() => openEditModal(libro)}><AiFillEdit />Editar</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      
 
-      <div className="Botones-tabla">
-        <button className="salir-libro" onClick={() => window.location.href = '/' }>Salir</button>
-        {/* Formulario para agregar un nuevo libro */}
-        <button className="AgregarLibro" onClick={openModal}>Agregar Nuevo Libro</button>
-      </div> 
+      <a href="/home" className="salir-libro">Salir</a>
 
-      {/* Modal */}
-      {modalVisible && (
-        <div className="modal" >
-            {/* Formulario para agregar un nuevo libro */}
-              
-              <div className="formularioRevista" id="formularioRevista"> 
-              
-                <div className="title" >
-                  <p>Agregar Nuevo Libro</p>
-                </div>
-                
-
-                <div className="formulario_revista" id="revista_codigo" >
-                  <label  className="formulario__label">Código: </label>
-                  <div className="formulario_revista-input">
-                  <input type="text" className="formulario__input" placeholder="# Código" value={newBookCode} onChange={handleCodeChange} /> <mark>*</mark>
-                  </div>
-                </div>
-
-                <div className="formulario_revista" id="revista__titulo">
-                  <label className="formulario__label">ISBN: </label>
-                  <div className="formulario_revista-input">
-                    <input type="text" className="formulario__input"  placeholder="ISBN"  value={newBookISBN} onChange={handleISBNChange} /> <mark>*</mark>
-                  </div>
-                </div>
-
-                <div className="formulario_revista" id="revista_fechaPublicacion">
-                  <label className="formulario__label">Edición: </label>
-                  <div className="formulario_revista-input">
-                    <input type="number" className="formulario__input"  placeholder="Edición" value={newBookEdition} onChange={handleEditionChange} />
-                  </div>
-                </div>
-
-      
-                  <div className="formulario_revista" id="revista_fecha">
-                    <label className="formulario__label">Fecha de publicación: </label>
-                    <div className="formulario_revista-input">
-                      <input type="date" className="formulario__input" value={newBookPublicationDate} onChange={handlePublicationDateChange} />
-                    </div>
-                  </div>
-
-                  <div className="formulario_revista" id="revista_NumPaginas">
-                    <label className="formulario__label">Número de páginas: </label>
-                    <div className="formulario_revista-input">
-                      <input type="number" className="formulario__input" placeholder="No. Paginas" value={newBookNumPages} onChange={handleNumPagesChange} />
-                    </div>
-                  </div>
-
-                  <div className="formulario_revista" id="revista_cantidad">
-                    <label  className="formulario__label">Cantidad de Libros: </label>
-                    <div className="formulario_revista-input">
-                      <input type="number" className="formulario__input" placeholder="cantidad" value={newBookAvailableQuantity} onChange={handleAvailableQuantityChange} />
-                    </div>
-                  </div>
-
-                  <div className="formulario_revista" id="revista_Tema">
-                    <label  className="formulario__label">Tema: </label>
-                    <div className="formulario_revista-input">
-                      <input type="text" className="formulario__input" placeholder="Tema" value={newBookTopic} onChange={handleTopicChange} />
-                    </div>
-                  </div>
-
-                  <div className="formulario_revista" id="revista_titulo">
-                    <label  className="formulario__label">Titulo: </label>
-                    <div className="formulario_revista-input">
-                      <input type="text" className="formulario__input"  placeholder="Titulo"  value={newBookTitle} onChange={handleTitleChange} />
-                    </div>
-                  </div>
-
-                  <div className="formulario_revista" id="revista_autor">
-                    <label  className="formulario__label">Autor: </label>
-                    <div className="formulario_revista-input">
-                      <input type="text" className="formulario__input" placeholder="Autor" value={newBookAuthor} onChange={handleAuthorChange} />
-                    </div>
-                  </div>
-
-
-                  <div className="formulario_revista_message" > 
-                  <p><mark>*</mark>En caso de no contar con el código o ISBN marcar con S/N </p> 
-                  </div>
-      
-                  <div className="formulario_revista">
-                    <label  className="formulario__label">Donado:
-                    <input type="checkbox" checked={newBookIsDonated} onChange={handleIsDonatedChange} />
-                    </label>
-                  </div>
-      
-                  <div  className="botones">
-                    <button type="submit" className="formulario__btn1" onClick={closeModal} >Cancelar</button>
-                    <button type="submit" className="formulario__btn2" onClick={handleAddBook} >Aceptar</button>
-                  </div>
-
-            </div>
+      {addModalVisible && (
+  <div className="modal">
+    <div className="formularioLibro">
+      <div className="title">
+        <p>Agregar Nuevo Libro</p>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Título: </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="Título" value={newTitulo} onChange={e => setNewTitulo(e.target.value)} />
         </div>
-        
-      )}
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Autor(es): </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="Autor(es)" value={newAutor} onChange={e => setNewAutor(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Fecha de Publicación: </label>
+        <div className="formulario_libro-input">
+          <input type="date" className="formulario__input" placeholder="Fecha de Publicación" value={newFechaPublicacion} onChange={e => setNewFechaPublicacion(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">ISBN: </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="ISBN" value={newISBN} onChange={e => setNewISBN(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Código: </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="Código" value={newCodigo} onChange={e => setNewCodigo(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Edición: </label>
+        <div className="formulario_libro-input">
+          <input type="number" className="formulario__input" placeholder="Edición" value={newEdicion} onChange={e => setNewEdicion(parseInt(e.target.value))} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Número de páginas: </label>
+        <div className="formulario_libro-input">
+          <input type="number" className="formulario__input" placeholder="Número de páginas" value={newNumPaginas} onChange={e => setNewNumPaginas(parseInt(e.target.value))} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Tema: </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="Tema" value={newTema} onChange={e => setNewTema(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Cantidad disponible: </label>
+        <div className="formulario_libro-input">
+          <input type="number" className="formulario__input" placeholder="Cantidad disponible" value={newCantidadDisponible} onChange={e => setNewCantidadDisponible(parseInt(e.target.value))} />
+        </div>
+      </div>
 
+      <div className="formulario_libro">
+        <label className="formulario__label">Donado: </label>
+        <div className="formulario_libro-input">
+          <input type="checkbox" checked={newEsDonado} onChange={e => setNewEsDonado(e.target.checked)} />
+        </div>
+      </div>
+
+      <button type="submit" className="formulario__btn1" onClick={closeAddModal}>Cancelar</button>
+      <button type="submit" className="formulario__btn2" onClick={handleAddLibro}>Agregar Libro</button> 
+    </div>
+   
+  </div>
+)}
+
+{editModalVisible && (
+  <div className="modal">
+    <div className="formularioLibro">
+      <div className="title">
+        <p>Editar Libro</p>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Título: </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="Título" value={newTitulo} onChange={e => setNewTitulo(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Autor(es): </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="Autor(es)" value={newAutor} onChange={e => setNewAutor(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Fecha de Publicación: </label>
+        <div className="formulario_libro-input">
+          <input type="date" className="formulario__input" placeholder="Fecha de Publicación" value={newFechaPublicacion} onChange={e => setNewFechaPublicacion(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">ISBN: </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="ISBN" value={newISBN} onChange={e => setNewISBN(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Código: </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="Código" value={newCodigo} onChange={e => setNewCodigo(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Edición: </label>
+        <div className="formulario_libro-input">
+          <input type="number" className="formulario__input" placeholder="Edición" value={newEdicion || ''} onChange={e => setNewEdicion(parseInt(e.target.value))} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Número de páginas: </label>
+        <div className="formulario_libro-input">
+          <input type="number" className="formulario__input" placeholder="Número de páginas" value={newNumPaginas || ''} onChange={e => setNewNumPaginas(parseInt(e.target.value))} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Tema: </label>
+        <div className="formulario_libro-input">
+          <input type="text" className="formulario__input" placeholder="Tema" value={newTema} onChange={e => setNewTema(e.target.value)} />
+        </div>
+      </div>
+      <div className="formulario_libro">
+        <label className="formulario__label">Cantidad disponible: </label>
+        <div className="formulario_libro-input">
+          <input type="number" className="formulario__input" placeholder="Cantidad disponible" value={newCantidadDisponible || ''} onChange={e => setNewCantidadDisponible(parseInt(e.target.value))} />
+        </div>
+      </div>
+
+      <div className="formulario_libro">
+        <label className="formulario__label">Donado: </label>
+        <div className="formulario_libro-input">
+          <input type="checkbox" checked={newEsDonado} onChange={e => setNewEsDonado(e.target.checked)} />
+        </div>
+      </div>
+
+      <button type="submit" className="formulario__btn1" onClick={closeEditModal}>Cancelar</button>
+      <button type="submit" className="formulario__btn2" onClick={handleEditLibro}>Guardar Cambios</button>
+    </div>
+  </div>
+)}
   
     </div>
   );
 };
-export default LibroComponent;
+
+export default LibroComponente;
