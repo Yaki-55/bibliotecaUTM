@@ -29,13 +29,13 @@ const HomeComponent: React.FC = () => {
           <img src="../../public/img/nuevoUsuario.png" alt="" width="100" height="100" />
           <p>Usuarios</p>
         </Link>
-        <Link to="/buscador">
+        <Link to="/trabajador">
           <img src="../../public/img/buscar.png" alt="" width="100" height="100" />
           <p>Buscador</p>
         </Link>
         <div onClick={openModal} className="home-link2"> {/* Agregamos la clase home-link */}
           <img src="../../public/img/nuevaRevista.png" alt="" width="100" height="100" />
-          <p>Nueva Revista</p>
+          <p>Inventario</p>
         </div>
         <Link to="/prestamos">
           <img src="../../public/img/prestamos.png" alt="" width="100" height="100" />

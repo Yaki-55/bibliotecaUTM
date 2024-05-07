@@ -1,107 +1,153 @@
-
-
 .tesis-container {
-    background-color: #f4f4f4; /* Color de fondo gris claro */
+    background-color: #f4f4f4;
     padding: 20px;
     border-radius: 8px;
-    margin: auto; /* Centra horizontalmente */
+    margin: auto;
     width: 90%;
-    max-width: 1200px;
-    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
-    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
-    position: absolute; /* Posición absoluta */
-    top: 50%; /* Centra verticalmente */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Centra correctamente */
+    max-width: 2500px;
+    margin-top: 20px;
+    /* Agrega margen superior para separarlo del título */
+    max-height: 800px;
+    /* Altura máxima para el contenedor */
+    overflow-y: auto;
+    /* Agrega desplazamiento vertical */
+    overflow-x: auto;
+    /* Oculta el desplazamiento horizontal */
 }
 
+/* Estilos para los botones de eliminar y editar al pasar el cursor */
+.tesis-container button:hover {
+    background-color: #0aec2c;
+}
+
+/* Estilo para el título */
 .tesis-container h1 {
     text-align: center;
-    color: #1f169f; /* Color del texto */
+    color: #1f169f;
+    letter-spacing: 2px;
+    margin-bottom: 1px;
+    /* Espacio debajo del título */
 }
 
+/* Estilo para la tabla */
 .tesis-container table {
     width: 100%;
-    max-width: 100%; /* Asegura que la tabla no sea más ancha que su contenedor */
     border-collapse: collapse;
-    margin-top: 20px;
-    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es muy ancha */
+    margin-top: 30px;
+    overflow-y: auto;
+    /* Agrega desplazamiento vertical */
+    max-height: 300px;
+    /* Altura máxima para la tabla */
 }
 
-.tesis-container th, .tesis-container td {
-    border: 1px solid #000000; /* Borde */
-    padding: 6px;
+/* Estilo para las celdas de la tabla */
+.tesis-container th,
+.tesis-container td {
+    border: 1px solid #000000;
+    padding: 10px;
+    background-color: #ffffff21;
     text-align: left;
-    color: black; /* Color del texto */
 }
 
 .tesis-container th {
-    background-color: #666; /* Color de fondo del encabezado */
-    color: white; /* Color del texto del encabezado */
+    background-color: #666;
+    /* Color de fondo verde para la cabecera */
+    color: white;
+    /* Color de texto blanco para la cabecera */
 }
 
-.tesis-container td {
-    background-color: #fff; /* Color de fondo de las celdas de la tabla */
-}
-
-.tesis-container input[type="text"],
-.tesis-container input[type="number"],
-.tesis-container input[type="date"],
-.tesis-container input[type="checkbox"] {
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.tesis-container button {
-    padding: 10px 20px;
-    margin: 10px;
+/* Estilo para el botón de salir */
+.salir-tesis {
+    background-color: #DE1010;
+    color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+/* Estilos para los botones de eliminar y editar */
+.tesis-container table button {
+    background-color: #171e26;
+    color: rgb(255, 240, 240);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-right: 5px;
+    /* Espacio entre los botones */
+    margin-bottom: 5px;
+    /* Agrega un margen inferior */
+}
+
+/* CSS */
+.tesis-modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tesis-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+}
+
+.tesis-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
+.tesis-modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.tesis-modal-content label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.tesis-modal-content input[type="text"],
+.tesis-modal-content input[type="date"],
+.tesis-modal-content input[type="number"],
+.tesis-modal-content input[type="checkbox"] {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.tesis-modal-content button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
 }
 
-.tesis-container .formulario-tesis h2 {
-    color: black; /* Color del título del formulario */
+.tesis-modal-content button:hover {
+    background-color: #0056b3;
 }
-
-.tesis-container .agregar-tesis {
-    background-color: #4CAF50; /* Color de fondo del botón de agregar */
-    color: white; /* Color del texto del botón de agregar */
-}
-
-/* Estilos para organizar el formulario en tres columnas */
-.tesis-container .formulario-tesis {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-    gap: 20px; /* Espacio entre las columnas */
-    align-items: end; /* Alinea los elementos al final de cada fila */
-}
-
-.tesis-container .formulario-tesis .input-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.tesis-container .formulario-tesis .input-group label {
-    margin-bottom: .5em;
-}
-
-.tesis-container .formulario-tesis button {
-    grid-column: span 3; /* El botón se extiende a través de las tres columnas */
-}
-
-/* El botón de Salir se coloca al final y abarca las tres columnas */
-.tesis-container .salir-tesis {
-    grid-column: span 3;
-    color: #000;
-    justify-self: left; 
-
-
-}
-
-.tesis-container .input-group label {
-    color: #000; /* Color del texto de las etiquetas */
-}
-

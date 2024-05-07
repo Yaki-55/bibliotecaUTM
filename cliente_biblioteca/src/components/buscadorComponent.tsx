@@ -217,7 +217,7 @@ const BuscadorComponent: React.FC = () => {
             <td>{libro.codigo}</td>
             <td>
               {/* Aquí iría el botón o enlace para ver más detalles */}
-              <button onClick={() => openModal1(libro)}>Ver más</button>
+              <button onClick={() => openModal1(libro)}>Reservar</button>
             </td>
           </tr>
         ))}
@@ -396,7 +396,7 @@ const BuscadorComponent: React.FC = () => {
         Buscar
         </button>
         
-        <a href="/home" className="exit-button">
+        <a href="/login" className="exit-button">
           SALIR
         </a>
       </form>

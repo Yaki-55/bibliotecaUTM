@@ -282,13 +282,29 @@ body {
       cursor: pointer; /* Cambiar el cursor al pasar sobre el checkbox */
   
     }
-    .formulario__btn1{
-        background-color: #DE1010;
-        border-radius: 10%;
-    }
-    .formulario__btn2{
-        background-color:#0F880D;
-    }
+/* Estilo para el botón Cancelar del formulario */
+.formulario__btn1 {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px; /* Ajusta el tamaño del padding para reducir el tamaño del botón */
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 10px; /* Agrega un poco de separación entre los botones */
+}
+
+/* Estilo para el botón Guardar Cambios o Agregar Usuario del formulario */
+.formulario__btn2 {
+  background-color: #ffc107;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 12px; /* Ajusta el tamaño del padding para reducir el tamaño del botón */
+  cursor: pointer;
+  margin-top: 20px;
+}
+
   
     .botones{
       grid-column: 1 / -1; /* Ocupa ambas columnas */

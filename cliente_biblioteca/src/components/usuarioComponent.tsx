@@ -149,7 +149,7 @@ const UsuarioComponent: React.FC = () => {
             </table>
             {/* Separador */}
             {index < usuarios.length - 1 && (
-              <hr style={{ margin: "20px 0" }} />
+              <hr style={{ margin: "10px 0" }} />
             )}
           </React.Fragment>
         ))}

@@ -1,174 +1,177 @@
-/* Estilos para el modal */
+/* Estilos para el contenedor principal */
+.cuadrosupermo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Permitir desplazamiento vertical */
+  height: calc(100vh - 40px); /* Altura del contenedor */
+}
 
+/* Estilos para el contenedor de usuarios */
 .usuario-container {
   display: flex;
-    flex-direction: column;
-    background-color: #f8c6c6; /* Color de fondo gris claro */
-    padding: 10px;
-    border-radius: 8px;
-    margin: center; /* Centra horizontalmente */
-    width: 100%;
-    max-width: 1000px;
-    justify-items: center; /* Centra horizontalmente los elementos dentro del contenedor */
-    align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
-    position: absolute; /* Posición absoluta */
-    top: 60%; /* Centra verticalmente */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Centra correctamente */
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  margin: auto; /* Centra horizontalmente */
+  width: 100%;
+  max-width: 1000px;
+  justify-items: center;
+  align-items: center;
+  position: relative;
 }
+
+/* Estilos para la tabla */
+.usuario-container table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #a56464;
+}
+
 .usuario-container th,
 .usuario-container td {
-    color: black; /* Establece el color del texto a negro */
-    padding: 12px; /* Aumenta el padding para más espacio alrededor del texto */
-    text-align: left; /* Alinea el texto a la izquierda para las celdas */
-    border: 1px solid #ccc; /* Borde para las celdas */
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
 }
-.TituloP{
-  color: #1A2B96;
+
+.usuario-container th {
+  background-color: #666;
+  color: white;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 16px;
 }
-/* Ajusta el botón para que aparezca al inicio del contenedor */
-.usuario-container > button:first-of-type {
-  align-self: center;  /* Alinea el botón */
-  margin-bottom: 20px;  /* Espacio debajo del botón para separarlo de la tabla */
-  padding: 10px 20px;  /* Padding más generoso para mejorar la interacción */
-  background-color: #4CAF50;  /* Color verde estándar para acciones de agregar */
-  color: white;  /* Texto en blanco para mayor visibilidad */
+
+.usuario-container td {
+  padding: 10px 8px;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Estilos para los botones */
+.usuario-container button {
+  padding: 8px 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-/* Agrega un hover efecto para el botón */
-.usuario-container > button:first-of-type:hover {
-  background-color: #367c39;  /* Oscurece el verde cuando el mouse está sobre el botón */
+.usuario-container button:first-of-type {
+  margin-bottom: 20px;
+  background-color: #4caf50;
+  color: white;
 }
 
+.usuario-container button:first-of-type:hover {
+  background-color: #367c39;
+}
+
+/* Estilos para el modal */
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Asegura que el modal esté por encima de otros elementos */
-  }
-  
-  /* Estilos para el formulario dentro del modal */
-  .formularioUsuario {
-    background-color: #fff; /* Fondo blanco */
-    padding: 20px;
-    border-radius: 8px;
-  }
-  
-  .title {
-    text-align: center;
-    color: #1A2B96; /* Azul */
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .formulario_usuario {
-    margin-bottom: 20px;
-  }
-  
-  .formulario__label {
-    display: block;
-    margin-bottom: 5px;
-    color: #1A2B96; /* Azul */
-  }
-  
-  .formulario__input,
-  .formulario_usuario select {
-    width: 80%;
-    max-width: 100%;
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-  }
-  
-  .formulario__input::placeholder {
-    color: #999;
-  }
-  
-  .botones {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .botones button {
-    margin-left: 10px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  .formulario__btn1 {
-    background-color: #DE1010;
-    color: white;
-    max-width: 50%;
-    padding: 6px 12px; /* Reducir el padding para hacer el botón más pequeño */
-    margin-top: 30px; /* Agregar espacio adicional arriba del botón */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
+/* Estilos para el formulario dentro del modal */
+.formularioUsuario {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.title {
+  text-align: center;
+  color: #000000;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.formulario_usuario {
+  margin-bottom: 20px;
+}
+
+.formulario__label {
+  display: block;
+  margin-bottom: 5px;
+  color: #000000;
+}
+
+.formulario__input,
+.formulario_usuario select {
+  width: 80%;
+  max-width: 100%;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+
+.formulario__input::placeholder {
+  color: #999;
+}
+
+.botones {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.botones button {
+  margin-left: 10px;
+}
+
+.formulario__btn1 {
+  background-color: #de1010;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px; /* Ajusta el tamaño del padding según tus necesidades */
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Estilo para el botón Guardar Cambios o Agregar Usuario del formulario */
 .formulario__btn2 {
-    background-color: #0F880D;
-    color: white;
-    padding: 6px 12px; /* Reducir el padding para hacer el botón más pequeño */
-    margin-top: 30px; /* Agregar espacio adicional arriba del botón */
+  background-color: #3df33d;
+  color: rgb(17, 16, 16);
+  border: none;
+  border-radius: 5px;
+  padding: 40px 10px; /* Ajusta el tamaño del padding según tus necesidades */
+  cursor: pointer;
+  margin-top: 20px;
 }
-  
-  .botones button:hover {
-    box-shadow: 3px 0px 30px rgba(23, 22, 22, 0.4);
-  }
-  
-  .botones button:focus {
-    box-shadow: 0 0 0 3px rgba(253, 253, 253, 0.5);
-  }
-  
-  /* Estilos para la tabla dentro del contenedor usuario-container */
-  usuario-container table {
-    width: 100%; /* Asegura que la tabla ocupe todo el ancho del contenedor */
-    border-collapse: collapse; /* Elimina el espacio entre los bordes de las celdas */
-    margin-top: 20px; /* Espacio superior para separar de otros elementos */
-    border: 1px solid #ccc; /* Borde más suave y moderno */
-  }
-  
-  .usuario-container th,
-  .usuario-container td {
-    border: 1px solid black; /* Borde de las celdas */
-    padding: 8px; /* Espaciado interno */
-    text-align: left; /* Alineación del texto */
-  }
-  
-  /* Estilos para los encabezados de la tabla */
-.usuario-container th {
-  background-color: #666; /* Fondo oscuro para contraste */
-  color: white; /* Texto en blanco para mejor visibilidad */
-  padding: 12px 8px; /* Ajusta el espaciado para mayor comodidad visual */
-  text-align: center; /* Centra el texto de los encabezados */
-  font-size: 16px; /* Aumenta el tamaño de la fuente para destacar */
+
+.botones button:hover {
+  box-shadow: 3px 0px 30px rgba(23, 22, 22, 0.4);
 }
-.usuario-container td {
-  padding: 10px 8px; /* Espaciado uniforme para todo el contenido de la celda */
-  text-align: left; /* Alineación del texto a la izquierda */
-  vertical-align: middle; /* Alinea el contenido de las celdas verticalmente al centro */
-  border: 1px solid #ccc; /* Borde suave para cada celda */
-  font-size: 14px; /* Tamaño de fuente adecuado para contenido */
+
+.botones button:focus {
+  box-shadow: 0 0 0 3px rgba(253, 253, 253, 0.5);
 }
-  
-  
-  .usuario-container tr:hover {
-    background-color: #fcd59f; /* Cambia el color de fondo al pasar el mouse sobre una fila */
-  }
-  /* Estilos para mejorar la visualización de las filas */
+
+/* Estilos para la tabla dentro del contenedor usuario-container */
+.usuario-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+.usuario-container tr:hover {
+  background-color: #fcd59f;
+}
+
 .usuario-container tr:nth-child(even),
 .usuario-container tr:nth-child(odd) {
-  background-color: #f9f9f9; /* Fondo uniforme para todas las filas */
-}
-.usuario-container .button {
-  margin: 4px; /* Espacio alrededor de los botones para evitar el hacinamiento */
-  font-weight: bold; /* Texto en negrita para mayor claridad */
+  background-color: #f9f9f9;
 }

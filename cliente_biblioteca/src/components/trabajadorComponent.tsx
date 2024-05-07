@@ -112,10 +112,7 @@ const TrabajadorComponent: React.FC = () => {
                         <td>{libro.autor}</td>
                         <td>{libro.tema}</td>
                         <td>{libro.codigo}</td>
-                        <td>
-                            {/* Aquí iría el botón o enlace para ver más detalles */}
-                            <button onClick={openModal}>reservar</button>
-                        </td>
+
                     </tr>
                 ))}
             </tbody>
@@ -275,7 +272,7 @@ const TrabajadorComponent: React.FC = () => {
         <button type="submit" className="search-button">
           Buscar
         </button>
-        <a href="/login" className="exit-button">
+        <a href="/home" className="exit-button">
           SALIR
         </a>
       </form>

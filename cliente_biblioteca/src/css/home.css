@@ -109,9 +109,7 @@
   transition: color 0.3s ease;
 }
 
-.modal-content a:hover {
-  color: #760b0b;
-}
+
 
 .modal-content p {
   margin-bottom: 15px;

@@ -96,7 +96,7 @@ const ReservaQRComponent: React.FC = () => {
             <button className="download-button" onClick={handleDownload}>
               <RiDownload2Line /> Descargar QR
             </button>
-            <Link to="/login" className="home-link"><FaSignOutAlt /> Cerrar sesión</Link>
+            <Link to="/buscador" className="home-link"><FaSignOutAlt /> Cerrar sesión</Link>
           </div>
         </div>
       );
