@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import client from '../utils/sanityClient'; 
 import '../css/reservaQR.css';
 import { useParams } from 'react-router-dom';

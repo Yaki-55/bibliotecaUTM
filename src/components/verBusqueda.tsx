@@ -5,7 +5,7 @@ import "../css/buscador.css";
 const verBusquedaComponent: React.FC = () => {
   const [libros, setLibros] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchType, handleSearchTypeChange] = useState("titulo");
+  const [searchType] = useState("titulo");
   const [documentType, setDocumentType] = useState(""); // Nuevo estado para el tipo de documento
   const [mostrarResultados, setMostrarResultados] = useState(false);
 
