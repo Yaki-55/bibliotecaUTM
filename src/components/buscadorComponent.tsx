@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import client from "../utils/sanityClient";
-import CrearQR from './crearQR';
+//import CrearQR from './crearQR';
 import "../css/buscador.css";
 
 const BuscadorComponent: React.FC = () => {
@@ -18,10 +18,10 @@ const BuscadorComponent: React.FC = () => {
   const [fechaEntrega, setFechaEntrega] = useState<string>('');
   const [libroSeleccionadoId, setLibroSeleccionadoId] = useState<string>('');
 
-  const [urlReserva, setUrlReserva] = React.useState(''); // Estado para la URL de la reserva
-  const [showQR, setShowQR] = React.useState(false); // Estado para mostrar el QR
-  
+  //const [urlReserva, setUrlReserva] = React.useState(''); // Estado para la URL de la reserva
+  //const [showQR, setShowQR] = React.useState(false); // Estado para mostrar el QR
   const [tituloLibro, setTituloLibro] = useState<string>('');
+  
 
   const obtenerTituloDeLibro = async (libroId: string): Promise<string> => {
     try {
@@ -38,7 +38,9 @@ const BuscadorComponent: React.FC = () => {
       return ''; // Devolver un valor predeterminado en caso de error
     }
   };
-  
+  const doNothing = async (id: string) => {
+    id;
+  }
 
   const openModal1 = (libro: any) => {
     setLibroSeleccionado(libro);
@@ -58,10 +60,10 @@ const BuscadorComponent: React.FC = () => {
 
   // Obtener título y tipo del libro seleccionado
   const titulo = await obtenerTituloDeLibro(libro._id);
-  setTituloLibro(titulo);
-
+    const tit2=tituloLibro
+    setTituloLibro(titulo);
     setModalVisible2(true);
-
+    doNothing(tit2);
   };
 
   const closeModal2 = () => {
@@ -138,12 +140,11 @@ const BuscadorComponent: React.FC = () => {
   
       // Registro en la consola para confirmar que la reserva se ha guardado
       console.log("Reserva guardada:", resultado);
-      const nuevaUrlReserva = `localhost:5173/reservas/`+ resultado._id;
-      console.log("URL: ", nuevaUrlReserva);
-      setUrlReserva(nuevaUrlReserva);
-      window.location.href = 'http://localhost:5173/reservas/'+ resultado._id ;
-
-      setShowQR(true);
+      //const nuevaUrlReserva = `localhost:5173/reservas/`+ resultado._id;
+      //console.log("URL: ", nuevaUrlReserva);
+      //setUrlReserva(nuevaUrlReserva);
+      window.location.href = '${window.location.origin}/reservas/'+ resultado._id ;
+      //setShowQR(true);
     } catch (error) {
       // Si hay algún error, imprimirlo en la consola
       console.error("Error al guardar la reserva:", error);

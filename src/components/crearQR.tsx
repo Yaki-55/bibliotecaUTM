@@ -11,10 +11,10 @@ interface CrearQRProps {
 }
 
 const CrearQR: React.FC<CrearQRProps> = ({ url, onClose }) => {
-  const [value, setValue] = useState('');
-  const [shortenedUrl, setShortenedUrl] = useState('');
+  const [value] = useState('');
+  const [, setShortenedUrl] = useState('');
   const [copied, setCopied] = useState(false);
-  const [qrColor, setQrColor] = useState('#000000'); // Color por defecto: negro
+  const [qrColor] = useState('#000000'); // Color por defecto: negro
 
   const handleClick = () => {
     const url = 'https://tinyurl.com/api-create.php';   //Usar esta pagina como api para crear QR
@@ -58,8 +58,13 @@ const CrearQR: React.FC<CrearQRProps> = ({ url, onClose }) => {
     } else {
       console.error('Canvas element not found.');
     }
+    doNothing();
   };
-
+  const doNothing = () => {
+    if(false){
+      handleClick();
+    }
+  }
   return (
     <div className="qr-modal-overlay"> {/* El overlay que cubre toda la pantalla */}
       <div className="qr-modal"> {/* El contenedor del modal */}
