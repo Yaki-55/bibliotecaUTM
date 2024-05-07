@@ -26,12 +26,6 @@ const verBusquedaComponent: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-  // const handleSearchTypeChange = (
-  //   event: React.ChangeEvent<HTMLInputElement>
-  // ) => {
-  //   setSearchType(event.target.value);
-  // };
-
   const handleDocumentTypeChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -199,7 +193,7 @@ const verBusquedaComponent: React.FC = () => {
                 name="searchType"
                 value="titulo"
                 checked={searchType === 'titulo'}
-                onChange={handleSearchTypeChange}
+                //onChange={handleSearchTypeChange}
             />
             Título
             </label>
@@ -209,7 +203,7 @@ const verBusquedaComponent: React.FC = () => {
                 name="searchType"
                 value="autor"
                 checked={searchType === 'autor'}
-                onChange={handleSearchTypeChange}
+                //onChange={handleSearchTypeChange}
             />
             Autor
             </label>
@@ -219,7 +213,7 @@ const verBusquedaComponent: React.FC = () => {
                 name="searchType"
                 value="tema"
                 checked={searchType === 'tema'}
-                onChange={handleSearchTypeChange}
+                //onChange={handleSearchTypeChange}
             />  
             Tema
             </label>
@@ -229,7 +223,7 @@ const verBusquedaComponent: React.FC = () => {
                 name="searchType"
                 value="isbn"
                 checked={searchType === 'isbn'}
-                onChange={handleSearchTypeChange}
+                //onChange={handleSearchTypeChange}
             />
             ISBN
             </label>
@@ -239,7 +233,7 @@ const verBusquedaComponent: React.FC = () => {
                 name="searchType"
                 value="issn"
                 checked={searchType === 'issn'}
-                onChange={handleSearchTypeChange}
+                //onChange={handleSearchTypeChange}
             />
             ISSN
             </label>
@@ -249,7 +243,7 @@ const verBusquedaComponent: React.FC = () => {
                 name="searchType"
                 value="codigo"
                 checked={searchType === 'codigo'}
-                onChange={handleSearchTypeChange}
+                //onChange={handleSearchTypeChange}
             />
             Código
             </label>
@@ -259,7 +253,7 @@ const verBusquedaComponent: React.FC = () => {
                 name="searchType"
                 value=""
                 checked={searchType === ''}
-                onChange={handleSearchTypeChange}
+                //onChange={handleSearchTypeChange}
             />
             Todo
             </label>
