@@ -25,7 +25,7 @@ const LoginComponent: React.FC = () => {
 
       if (user.tipo_usuario === 'administrador') {
         // Redirigir al usuario administrador a la página de inicio
-        window.location.href = 'http://localhost:5173/home';
+        window.location.href = '/home';
       } else if (user.tipo_usuario === 'alumno') {
         const alumno = user.nombre;
         console.log(alumno);
@@ -34,12 +34,12 @@ const LoginComponent: React.FC = () => {
 
         // Retrasa la redirección en 5 segundos para permitir que se muestre el nombre del alumno
         setTimeout(() => {
-          window.location.href = 'http://localhost:5173/buscador';
+          window.location.href = '/buscador';
         }, 5000);
       } else if (user.tipo_usuario === 'trabajador') {
         // Redirigir al usuario trabajador a otra página de inicio o realizar otra acción
         // Por ejemplo: window.location.href = '/otra-ruta';
-        window.location.href = 'http://localhost:5173/trabajador';
+        window.location.href = '/trabajador';
         console.log('Usuario trabajador autenticado');
       }
     } catch (error) {
